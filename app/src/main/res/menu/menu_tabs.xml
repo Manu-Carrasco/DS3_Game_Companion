@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/chat"
+        android:enabled="true"
+        android:title="@string/tab_bosses_tittle"
+        android:icon="@drawable/ic_info"/>
+    <item
+        android:id="@+id/chat2"
+        android:enabled="true"
+        android:title="@string/tab_chat_tittle"
+        android:icon="@drawable/ic_chat"/>
+    <item
+        android:id="@+id/chat3"
+        android:enabled="true"
+        android:title="@string/tab_accounts_tittle"
+        android:icon="@drawable/ic_accounts"/>
+</menu>

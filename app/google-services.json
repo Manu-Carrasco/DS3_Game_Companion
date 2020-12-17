@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "984506296942",
+    "project_id": "ds3-companion",
+    "storage_bucket": "ds3-companion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984506296942:android:8ee83841a655399018d47f",
+        "android_client_info": {
+          "package_name": "com.miyazakigames.dscompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984506296942-ehfr4odn45g4ogi6dqtugcd221s69p82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4bzAbD-fmV3HiaFZjm7u7Ze3zHZrGoYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984506296942-ehfr4odn45g4ogi6dqtugcd221s69p82.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

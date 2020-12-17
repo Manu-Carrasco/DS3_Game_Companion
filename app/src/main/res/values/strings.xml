@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DS3Companion</string>
+    <string name="tab_bosses_tittle">Bosses</string>
+    <string name="tab_chat_tittle">Chat</string>
+    <string name="tab_accounts_tittle">Accounts</string>
+    <string name="button_register">Register</string>
+    <string name="button_login">Log In</string>
+    <string name="button_send">Send</string>
+    <string name="message_welcome">Welcome!</string>
+    <string name="hint_enter_email">Enter your email here</string>
+    <string name="hint_enter_password">Enter your password here</string>
+    <string name="error_email_invalid">Email is not Valid</string>
+    <string name="error_password_invalid">Password must be at least %d characters long and contain at least a number among them</string>
+    <string name="hint_enter_username">Enter your username here</string>
+    <string name="error_email_or_password">Email or password are not correct, try again</string>
+</resources>
