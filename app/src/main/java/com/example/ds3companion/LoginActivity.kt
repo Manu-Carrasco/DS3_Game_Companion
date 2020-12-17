@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun findOnlineAccount(username: String, password: String){
         firestore
+                
                 .collection(Constants.COLLECTION_USERS)
                 .get()
                 .addOnCompleteListener{
