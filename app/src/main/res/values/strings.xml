@@ -9,8 +9,21 @@
     <string name="message_welcome">Welcome!</string>
     <string name="hint_enter_email">Enter your email here</string>
     <string name="hint_enter_password">Enter your password here</string>
+    <string name="hint_enter_username">Enter your username here</string>
     <string name="error_email_invalid">Email is not Valid</string>
     <string name="error_password_invalid">Password must be at least %d characters long and contain at least a number among them</string>
-    <string name="hint_enter_username">Enter your username here</string>
     <string name="error_email_or_password">Email or password are not correct, try again</string>
+    <string name="message_userCreated">User created</string>
+    <string name="error_signUp">Error signing up, try again.</string>
+    <string name="TAG_Chat">Chat</string>
+    <string name="message_messageSend">Success uploading message</string>
+    <string name="error_messageLost">Error uploading message</string>
+    <string name="event_registerClick">registerButtonClick</string>
+    <string name="event_loginClick">loginButtonClick</string>
+    <string name="sharedPreferences_name">test</string>
+    <string name="sharedPreferences_string1">firstkey</string>
+    <string name="sharedPreferences_string2">value</string>
+    <string name="sharedPreferences_file">userPreferences</string>
+    <string name="sharedPreferences_username">username</string>
+
 </resources>

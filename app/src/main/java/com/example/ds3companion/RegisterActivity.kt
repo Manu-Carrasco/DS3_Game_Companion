@@ -93,19 +93,19 @@ class RegisterActivity : AppCompatActivity() {
                                         progressBar.visibility = View.GONE
                                         finish()
                                         if (it.isSuccessful){
-                                            showMessage("User created ${it.exception?.message ?: ""}")
+                                            showMessage(getString(R.string.message_userCreated))
                                         } else {
-                                            showMessage("Error signing up, try again. ${it.exception?.message ?: ""}")
+                                            showMessage(getString(R.string.error_signUp))
                                         }
                                     }
                         } ?: kotlin.run {
-                            showMessage("Error signing, try again. ${it.exception?.message ?: ""}")
+                            showMessage(getString(R.string.error_signUp))
                             progressBar.visibility = View.GONE
                             registerButton.isEnabled = true
                         }
                     }
                     else{
-                        showMessage("Error signing up, try again. ${it.exception?.message ?: ""}")
+                        showMessage(getString(R.string.error_signUp))
                         progressBar.visibility = View.GONE
                         registerButton.isEnabled = true
                     }

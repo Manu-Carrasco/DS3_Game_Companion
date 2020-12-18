@@ -39,12 +39,12 @@ class AccountsFragment: Fragment(){
 
     private fun initListeners(){
         registerButton.setOnClickListener{
-            Firebase.analytics.logEvent("registerButtonClick", null)
+            Firebase.analytics.logEvent(getString(R.string.event_registerClick), null)
             val intent = Intent(activity, RegisterActivity::class.java)
             startActivity(intent)
         }
         loginButton.setOnClickListener{
-            Firebase.analytics.logEvent("loginButtonClick", null)
+            Firebase.analytics.logEvent(getString(R.string.event_loginClick), null)
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -53,9 +53,9 @@ class AccountsFragment: Fragment(){
 
 
     private fun saveData(){
-        val sharedPreferences = activity!!.getSharedPreferences("test", Context.MODE_PRIVATE)
+        val sharedPreferences = activity!!.getSharedPreferences(getString(R.string.sharedPreferences_name), Context.MODE_PRIVATE)
         sharedPreferences.edit()
-                .putString("firstkey", "value")
+                .putString(getString(R.string.sharedPreferences_string1), getString(R.string.sharedPreferences_string2))
                 .apply()
     }
 }

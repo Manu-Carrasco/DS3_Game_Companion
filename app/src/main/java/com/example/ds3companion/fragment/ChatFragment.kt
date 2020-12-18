@@ -24,6 +24,8 @@ import java.util.*
 
 class ChatFragment: Fragment(){
 
+    private val MyTag = "Chat"
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var messageEditText: EditText
     private lateinit var sendButton: Button
@@ -42,23 +44,23 @@ class ChatFragment: Fragment(){
         firestore =  Firebase.firestore
         initViews(view)
         initRecyclerView()
-        getChats()                            /*___________________*/
-        initListeners()                       /*___________________*/
+        getChats()
+        initListeners()
 
     }
 
     private fun initViews(view: View) {
         recyclerView = view.findViewById(R.id.recyclerView)
-        messageEditText = view.findViewById(R.id.messageEditText)         /*___________________*/
-        sendButton = view.findViewById(R.id.sendButton)                   /*___________________*/
-        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)   /*___________________*/
+        messageEditText = view.findViewById(R.id.messageEditText)
+        sendButton = view.findViewById(R.id.sendButton)
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
     }
 
     private fun initRecyclerView(){
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
 
-        chatAdapter = ChatAdapter(chatList = listOf())  /*___________________*/
+        chatAdapter = ChatAdapter(chatList = listOf())
         recyclerView.adapter = chatAdapter
     }
 
@@ -100,11 +102,11 @@ class ChatFragment: Fragment(){
                                         .add(chat)
                                         .addOnCompleteListener{
                                             if(it.isSuccessful){
-                                                Log.i("Chat","Success uploading message")
+                                                Log.i(MyTag,getString(R.string.message_messageSend))
                                                 getChats()
                                             }
                                             else{
-                                                Log.i("Chat","Error uploading message")
+                                                Log.i(MyTag,getString(R.string.error_messageLost))
                                                 // TODO: Show error
                                             }
                                         }
