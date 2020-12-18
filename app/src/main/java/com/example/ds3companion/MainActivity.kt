@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
         }
         bottomNavigationView.selectedItemId = R.id.chat
 
-//        val adView = findViewById<AdView>(R.id.adView)
-//        val adRequest = AdRequest.Builder().build()
-//        adView.loadAd(adRequest)
+        val adView = findViewById<AdView>(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
 
         MobileAds.initialize(this)
     }
