@@ -13,13 +13,21 @@ import com.example.ds3companion.R
 import com.example.ds3companion.RegisterActivity
 import com.example.ds3companion.LoginActivity
 import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class AccountsFragment: Fragment(){
 
     private lateinit var registerButton: Button
     private lateinit var loginButton: Button
+    private lateinit var logoutButton: Button
+    private lateinit var welcomeText: TextView
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_accounts, container,false)
@@ -30,11 +38,17 @@ class AccountsFragment: Fragment(){
         initViews(view)
         initListeners()
         saveData()
+
+        auth = Firebase.auth
+        firestore = Firebase.firestore
+        checkUserAvailability()
     }
 
     private fun initViews(parentView: View) {
         registerButton = parentView.findViewById<Button>(R.id.registerButton)
         loginButton = parentView.findViewById<Button>(R.id.loginButton)
+        logoutButton = parentView.findViewById<Button>(R.id.logOutButton)
+        welcomeText = parentView.findViewById<Button>(R.id.welcomeText)
     }
 
     private fun initListeners(){
@@ -48,9 +62,27 @@ class AccountsFragment: Fragment(){
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
+        logoutButton.setOnClickListener{
+            auth.signOut()
+            checkUserAvailability()
+        }
     }
 
 
+    private fun checkUserAvailability() {
+        if(auth.currentUser != null) {
+            // Local account found
+            registerButton.visibility = View.GONE
+            loginButton.visibility = View.GONE
+            logoutButton.visibility = View.VISIBLE
+            welcomeText.visibility = View.VISIBLE
+        } else {
+            registerButton.visibility = View.VISIBLE
+            loginButton.visibility = View.VISIBLE
+            logoutButton.visibility = View.GONE
+            welcomeText.visibility = View.GONE
+        }
+    }
 
     private fun saveData(){
         val sharedPreferences = activity!!.getSharedPreferences(getString(R.string.sharedPreferences_name), Context.MODE_PRIVATE)

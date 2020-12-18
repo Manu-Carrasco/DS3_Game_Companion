@@ -65,23 +65,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    private fun checkUserAvailability(username: String, password: String) {
-//        Firebase.auth.currentUser?.let {
-//            // Local account found
-//            showMessage("User Logged")
-//            progressBar.visibility = View.GONE
-//            val intent = Intent(this, RegisterActivity::class.java)
-//            startActivity(intent)
-//
-//        } ?:run {
-//            // No local account found
-//            findOnlineAccount(username, password)
-//        }
-//    }
-
     private fun findOnlineAccount(username: String, password: String){
         firestore
-                
                 .collection(Constants.COLLECTION_USERS)
                 .get()
                 .addOnCompleteListener{
@@ -95,8 +80,7 @@ class LoginActivity : AppCompatActivity() {
                         // Show account characters
                         showMessage("User Logged")
                         progressBar.visibility = View.GONE
-                        val intent = Intent(this, RegisterActivity::class.java)  // IMPORTANT Here goes CharactersActivity when created
-                        startActivity(intent)
+                        finish()
                     } else {
                         // Doesn't found player account
                         progressBar.visibility = View.GONE

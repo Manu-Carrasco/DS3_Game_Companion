@@ -5,6 +5,7 @@
     <string name="tab_accounts_tittle">Accounts</string>
     <string name="button_register">Register</string>
     <string name="button_login">Log In</string>
+    <string name="button_logout">Log Out</string>
     <string name="button_send">Send</string>
     <string name="message_welcome">Welcome!</string>
     <string name="hint_enter_email">Enter your email here</string>
