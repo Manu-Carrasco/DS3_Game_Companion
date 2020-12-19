@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/adView"
+        android:background="#32201e"
         app:menu="@menu/menu_tabs" />
 
     <com.google.android.gms.ads.AdView

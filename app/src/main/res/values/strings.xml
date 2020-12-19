@@ -26,5 +26,13 @@
     <string name="sharedPreferences_string2">value</string>
     <string name="sharedPreferences_file">userPreferences</string>
     <string name="sharedPreferences_username">username</string>
+    <string name="info_boss1">La mejor manera de acabar con él es acosarlo con ataques físicos. Es vulnerable a todos los tipos de daño físico, además de al veneno. Esto significa que una espada a una mano envenenada es absolutamente letal frente a él.
+                              Cuando le golpeas lo suficiente se teletransporta para dejar de recibir daño. Gira la cámara hasta ver su luz y corre a por él, antes de darle tiempo a usar magia.</string>
+    <string name="info_boss2">El enemigo es humanoide, lo que implica que puedes bloquear, desviar y contraatacar, así como apuñalar por la espalda. Dado que usan una gran espada como arma, suelen quedar desprotegidos tras sus ataques.
+                              La pelea se divide en dos fases, y durante la primera aparecerán uno más de ellos cada 20 segundos.</string>
+    <string name="info_boss3">Debes tener en cuenta que se teletransporta y que, si está en medio de un combo, al reaparecer lo terminara, pero puedes bloquear todos sus ataques.
+                              Si se teletransporta a un punto lejano, al aparecer hace un ataque descendente con la espada, con mucho alcance en línea recta.</string>
+    <string name="info_boss4">La mejor manera de acabar con él es acosarlo con ataques físicos. Es vulnerable a todos los tipos de daño físico, además de al veneno. Esto significa que una espada a una mano envenenada es absolutamente letal frente a él.
+                              Cuando le golpeas lo suficiente se teletransporta para dejar de recibir daño. Gira la cámara hasta ver su luz y corre a por él, antes de darle tiempo a usar magia.</string>
 
 </resources>
