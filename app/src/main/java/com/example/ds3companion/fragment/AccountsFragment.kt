@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.ds3companion.InventoryActivity
 import com.example.ds3companion.R
 import com.example.ds3companion.RegisterActivity
 import com.example.ds3companion.LoginActivity
@@ -76,12 +77,15 @@ class AccountsFragment: Fragment(){
             loginButton.visibility = View.GONE
             logoutButton.visibility = View.VISIBLE
             welcomeText.visibility = View.VISIBLE
+
         } else {
             registerButton.visibility = View.VISIBLE
             loginButton.visibility = View.VISIBLE
             logoutButton.visibility = View.GONE
             welcomeText.visibility = View.GONE
         }
+        val intent = Intent(activity, InventoryActivity::class.java)
+        startActivity(intent)
     }
 
     private fun saveData(){
