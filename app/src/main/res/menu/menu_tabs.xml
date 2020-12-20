@@ -3,16 +3,16 @@
     <item
         android:id="@+id/chat"
         android:enabled="true"
-        android:title="@string/tab_bosses_tittle"
-        android:icon="@drawable/ic_info"/>
+        android:title=""
+        android:icon="@drawable/ic_ventanabosses"/>
     <item
         android:id="@+id/chat2"
         android:enabled="true"
-        android:title="@string/tab_chat_tittle"
-        android:icon="@drawable/ic_chat"/>
+        android:title=""
+        android:icon="@drawable/ic_ventanachat"/>
     <item
         android:id="@+id/chat3"
         android:enabled="true"
-        android:title="@string/tab_accounts_tittle"
-        android:icon="@drawable/ic_accounts"/>
+        android:title=""
+        android:icon="@drawable/ic_ventanaaccounts"/>
 </menu>

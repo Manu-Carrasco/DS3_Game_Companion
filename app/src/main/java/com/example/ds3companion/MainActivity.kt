@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val bottomNavigationView: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.itemIconTintList = null
+        bottomNavigationView.itemIconSize = 128
 
         bottomNavigationView.setOnNavigationItemSelectedListener{menuItem: MenuItem ->
             when(menuItem.itemId){
