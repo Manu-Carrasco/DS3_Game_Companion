@@ -77,15 +77,14 @@ class AccountsFragment: Fragment(){
             loginButton.visibility = View.GONE
             logoutButton.visibility = View.VISIBLE
             welcomeText.visibility = View.VISIBLE
-
+            val intent = Intent(activity, InventoryActivity::class.java)
+            startActivity(intent)
         } else {
             registerButton.visibility = View.VISIBLE
             loginButton.visibility = View.VISIBLE
             logoutButton.visibility = View.GONE
             welcomeText.visibility = View.GONE
         }
-        val intent = Intent(activity, InventoryActivity::class.java)
-        startActivity(intent)
     }
 
     private fun saveData(){
