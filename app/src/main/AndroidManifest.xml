@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_icono"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_icono"
         android:supportsRtl="true"
         android:theme="@style/Theme.DS3Companion">
         <activity android:name=".InventoryActivity"></activity>
