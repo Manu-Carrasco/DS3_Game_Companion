@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center">
 
         <LinearLayout
@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Sabio de Cristal"
+                    android:text="@string/name_boss1"
                     android:textColor="@color/white"
                     android:textSize="24dp" />
             </LinearLayout>
@@ -96,7 +96,7 @@
                     android:textSize="24dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:text="Vigilante del abismo"/>
+                    android:text="@string/name_boss2"/>
             </LinearLayout>
 
             <LinearLayout
@@ -154,7 +154,7 @@
                     android:textSize="24dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:text="Principe Lothric"/>
+                    android:text="@string/name_boss3"/>
             </LinearLayout>
 
             <LinearLayout
@@ -212,7 +212,7 @@
                     android:textSize="24dp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:text="Alma de Ceniza"/>
+                    android:text="@string/name_boss4"/>
             </LinearLayout>
 
             <LinearLayout
