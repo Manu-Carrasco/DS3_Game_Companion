@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="1000dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/fondos1">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1000dp"
         android:gravity="center">
 
         <LinearLayout
@@ -16,8 +16,8 @@
             android:layout_weight="1"
             android:gravity="top"
             android:orientation="horizontal"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp">
+            android:paddingHorizontal="@dimen/bosses_paddingHorizontal"
+            android:paddingVertical="@dimen/bosses_paddingVertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -25,11 +25,11 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="173dp"
+                    android:layout_height="@dimen/bossImageY2"
                     android:src="@drawable/bosses1" />
 
                 <TextView
@@ -38,32 +38,32 @@
                     android:gravity="center"
                     android:text="@string/name_boss1"
                     android:textColor="@color/white"
-                    android:textSize="24dp" />
+                    android:textSize="@dimen/bosses_nameSize" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="377dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="top"
                 android:orientation="vertical"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/info_boss1"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="@dimen/bosses_textSize" />
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="@dimen/tableY2"
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
         <ImageView
-            android:layout_width="411dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea" />
 
@@ -75,8 +75,8 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:layout_weight="1"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp">
+            android:paddingHorizontal="@dimen/bosses_paddingHorizontal"
+            android:paddingVertical="@dimen/bosses_paddingVertical">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -84,44 +84,44 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="173dp"
+                    android:layout_height="@dimen/bossImageY2"
                     android:src="@drawable/bosses2" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24dp"
+                    android:textSize="@dimen/bosses_nameSize"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:text="@string/name_boss2"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="377dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="top"
                 android:orientation="vertical"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
+                    android:textSize="@dimen/bosses_textSize"
                     android:text="@string/info_boss2"/>
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="@dimen/tableY2"
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
         <ImageView
-            android:layout_width="411dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea" />
 
@@ -133,8 +133,8 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:layout_weight="1"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp">
+            android:paddingHorizontal="@dimen/bosses_paddingHorizontal"
+            android:paddingVertical="@dimen/bosses_paddingVertical">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -142,44 +142,44 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="173dp"
+                    android:layout_height="@dimen/bossImageY2"
                     android:src="@drawable/bosses3" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24dp"
+                    android:textSize="@dimen/bosses_nameSize"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:text="@string/name_boss3"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="377dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="top"
                 android:orientation="vertical"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="10dp"
+                    android:textSize="@dimen/bosses_textSize"
                     android:textColor="@color/white"
                     android:text="@string/info_boss3"/>
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="@dimen/tableY2"
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
         <ImageView
-            android:layout_width="411dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea" />
 
@@ -191,8 +191,8 @@
             android:layout_height="wrap_content"
             android:gravity="top"
             android:layout_weight="1"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp">
+            android:paddingHorizontal="@dimen/bosses_paddingHorizontal"
+            android:paddingVertical="@dimen/bosses_paddingVertical">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -200,44 +200,44 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="173dp"
+                    android:layout_height="@dimen/bossImageY2"
                     android:src="@drawable/bosses1" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24dp"
+                    android:textSize="@dimen/bosses_nameSize"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:text="@string/name_boss4"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="377dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="top"
                 android:orientation="vertical"
-                android:paddingHorizontal="5dp">
+                android:paddingHorizontal="@dimen/bosses_paddingVertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="10dp"
+                    android:textSize="@dimen/bosses_textSize"
                     android:text="@string/info_boss1"/>
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="@dimen/tableY2"
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
         <ImageView
-            android:layout_width="411dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_linea" />
 

@@ -34,6 +34,11 @@ class AccountsFragment: Fragment(){
         return inflater.inflate(R.layout.fragment_accounts, container,false)
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkUserAvailability()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(view)

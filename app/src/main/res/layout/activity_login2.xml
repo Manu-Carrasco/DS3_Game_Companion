@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     android:gravity="center"
+    android:background="@drawable/fondos1"
     tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/accountsMargin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="text"
         android:gravity="center"
         android:hint="@string/hint_enter_username"/>
@@ -20,6 +23,9 @@
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/accountsMargin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="textPassword"
         android:gravity="center"
         android:hint="@string/hint_enter_password"/>
@@ -27,13 +33,15 @@
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/accountsMargin"
+        android:layout_marginTop="@dimen/accountsMargin"
+        android:backgroundTint="@color/tabs"
         android:text="@string/button_login"/>
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/accountsMargin"
         android:visibility="invisible"/>
 
 </LinearLayout>

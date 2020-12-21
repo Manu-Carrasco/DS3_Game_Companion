@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="slotSize">50dp</dimen>
+    <dimen name="iconTiny">48dp</dimen>
+    <dimen name="iconMedium">48dp</dimen>
+
+    <dimen name="bossImageX">315dp</dimen>
+    <dimen name="bossImageY">225dp</dimen>
+    <dimen name="bossImageY2">140dp</dimen>
+    <dimen name="bosses_paddingHorizontal">10dp</dimen>
+    <dimen name="bosses_paddingVertical">5dp</dimen>
+    <dimen name="bosses_textSize">10dp</dimen>
+    <dimen name="bosses_nameSize">24dp</dimen>
+
+    <dimen name="accountsMargin">60dp</dimen>
+    <dimen name="character_paddingHorizontal">10dp</dimen>
+    <dimen name="character_paddingVertical">5dp</dimen>
+    <dimen name="character_marginTiny">16dp</dimen>
+    <dimen name="character_marginMedium">30dp</dimen>
+    <dimen name="character_marginLarge">130dp</dimen>
+    <dimen name="character_marginXCentralSlots">35dp</dimen>
+    <dimen name="character_marginXSideSlots">70dp</dimen>
+    <dimen name="character_marginYSlot1">100dp</dimen>
+    <dimen name="character_marginYSlot2">150dp</dimen>
+    <dimen name="character_marginYSlot3">200dp</dimen>
+    <dimen name="character_marginYSlot4">270dp</dimen>
+    <dimen name="character_marginYSlot5">300dp</dimen>
+
+    <dimen name="messageHeight">72dp</dimen>
+
+    <dimen name="lineX">337dp</dimen>
+    <dimen name="lineY">45dp</dimen>
+    <dimen name="borderX">400dp</dimen>
+    <dimen name="borderY">100dp</dimen>
+    <dimen name="silhouetteX">475dp</dimen>
+    <dimen name="silhouetteY">650dp</dimen>
+    <dimen name="silhouetteY2">425dp</dimen>
+    <dimen name="tableX">310dp</dimen>
+    <dimen name="tableY">136dp</dimen>
+    <dimen name="tableY2">90dp</dimen>
+
 </resources>

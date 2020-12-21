@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     android:gravity="center"
+    android:background="@drawable/fondos1"
     tools:context=".RegisterActivity">
 
 
@@ -14,6 +14,9 @@
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/character_marginTiny"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="text"
         android:gravity="center"
         android:hint="@string/hint_enter_username"/>
@@ -21,6 +24,9 @@
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/character_marginTiny"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="textEmailAddress"
         android:gravity="center"
         android:hint="@string/hint_enter_email"/>
@@ -28,6 +34,9 @@
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/character_marginTiny"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="textPassword"
         android:gravity="center"
         android:hint="@string/hint_enter_password"/>
@@ -35,13 +44,15 @@
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/character_marginTiny"
+        android:layout_marginTop="@dimen/character_marginTiny"
+        android:backgroundTint="@color/tabs"
         android:text="@string/button_register"/>
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/character_marginTiny"
         android:visibility="invisible"/>
 
 

@@ -68,7 +68,7 @@ class ChatFragment: Fragment(){
         sendButton.setOnClickListener{
             val message = messageEditText.text.toString()
             if(message.isBlank()) return@setOnClickListener
-            sendMessage(message)
+//            sendMessage(message)
         }
 
         swipeRefreshLayout.setOnRefreshListener {
@@ -77,50 +77,49 @@ class ChatFragment: Fragment(){
 
     }
 
-    private fun sendMessage(message: String){
-        Firebase.auth.currentUser?.uid?.let { userId: String ->
-
-
-            firestore
-                    .collection(COLLECTION_CHAT)
-                    .document(userId)
-                    .get()
-                    .addOnCompleteListener{
-                        if(it.isSuccessful){
-                            it.result?.toObject(User::class.java)?.let{user: User ->
-                                val chat = Chat(
-                                        userId = Firebase.auth.currentUser?.uid,
-                                        message = message,
-                                        sentAt = Date().time,
-                                        isSent = false,
-                                        imageUrl = null,
-                                        username = user.username,
-                                        avatarUrl = null // TODO: Support User Avatar
-                                )
-                                firestore
-                                        .collection(COLLECTION_CHAT)
-                                        .add(chat)
-                                        .addOnCompleteListener{
-                                            if(it.isSuccessful){
-                                                Log.i(MyTag,getString(R.string.message_messageSend))
-                                                getChats()
-                                            }
-                                            else{
-                                                Log.i(MyTag,getString(R.string.error_messageLost))
-                                                // TODO: Show error
-                                            }
-                                        }
-                            } ?: run {
-                                // TODO: Show error
-                            }
-                        } else {
-                            // TODO: Show error
-                        }
-                    }
-        } ?: run {
-            // TODO: Show error
-        }
-    }
+//    private fun sendMessage(message: String){
+//        Firebase.auth.currentUser?.uid?.let { userId: String ->
+//
+//
+//            firestore
+//                    .collection(COLLECTION_CHAT)
+//                    .document(userId)
+//                    .get()
+//                    .addOnCompleteListener{
+//                        if(it.isSuccessful){
+//                            it.result?.toObject(User::class.java)?.let{user: User ->
+//                                val chat = Chat(
+//                                        userId = Firebase.auth.currentUser?.uid,
+//                                        message = message,
+//                                        sentAt = Date().time,
+//                                        isSent = false,
+//                                        imageUrl = null,
+//                                        username = user.username,
+//                                        avatarUrl = null
+//                                )
+//                                firestore
+//                                        .collection(COLLECTION_CHAT)
+//                                        .add(chat)
+//                                        .addOnCompleteListener{
+//                                            if(it.isSuccessful){
+//                                                Log.i(MyTag,getString(R.string.message_messageSend))
+//                                                getChats()
+//                                            }
+//                                            else{
+//                                                Log.i(MyTag,getString(R.string.error_messageLost))
+//                                            }
+//                                        }
+//                            } ?: run {
+//
+//                            }
+//                        } else {
+//
+//                        }
+//                    }
+//        } ?: run {
+//
+//        }
+//    }
 
     private fun getChats(){
         swipeRefreshLayout.isRefreshing = true
