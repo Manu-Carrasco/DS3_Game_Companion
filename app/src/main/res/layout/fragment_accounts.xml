@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:gravity="center"
-        android:text="@string/message_welcome"/>
+        android:text="@string/message_wantlogout"/>
 
     <Button
         android:id="@+id/logOutButton"
