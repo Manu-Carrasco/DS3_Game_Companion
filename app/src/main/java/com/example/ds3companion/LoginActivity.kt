@@ -71,21 +71,32 @@ class LoginActivity : AppCompatActivity() {
                 .get()
                 .addOnCompleteListener{
                     var found = false
+                    var email = ""
                     for(document in it.result!!){
                         if(document.data.getValue("username") == username && document.data.getValue("password") == password) {
                             found = true;
+                            email = document.data.getValue("email").toString()
                         }
                     }
-                    if(found){
+                    if(found) {
                         // Show account characters
-                        showMessage("User Logged")
-                        progressBar.visibility = View.GONE
-                        finish()
+                        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                showMessage("signInWithEmail:success")
+                            } else {
+                                showMessage("Authentication failed")
+                            }
+                            showMessage("User Logged")
+                            progressBar.visibility = View.GONE
+                            finish()
+                        }
                     } else {
                         // Doesn't found player account
                         progressBar.visibility = View.GONE
                         showMessage("Username or Password is not correct")
                     }
+
                 }
     }
 
