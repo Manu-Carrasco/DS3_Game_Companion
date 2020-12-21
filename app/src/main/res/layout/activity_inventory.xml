@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/character_paddingVertical"
                     android:layout_marginTop="@dimen/character_paddingHorizontal"
-                    android:textColor="#@color/white">
+                    android:textColor="@color/white">
 
                 </TextView>
 
