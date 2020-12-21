@@ -28,32 +28,23 @@ class InventoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inventory)
         firestore = Firebase.firestore
         auth = Firebase.auth
-        getCharacterData("warrior")
+        getCharacterData()
+        val uid = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("uid", null)
+        Log.d(MyTag, "$uid")
     }
 
-    fun getCharacterData(userClass:String){
-        firestore.collection(Constants.COLLECTION_CLASSES).document(userClass).get().addOnSuccessListener { snapshot ->
-            if(snapshot.exists()){
-                //Obtenemos datos
-                //char = snapshot.toObject(Character::class.java)
-                findViewById<TextView>(R.id.nameText).text = snapshot.getString(R.string.class_name.toString())
-                findViewById<TextView>(R.id.levelText).text = snapshot.getString(R.string.class_level.toString())
-                findViewById<TextView>(R.id.locationText).text = snapshot.getString(R.string.class_location.toString())
-
-                var seconds : Double? = snapshot.getString(R.string.class_playtime.toString())?.toDouble();
-                var minutes : Double? = seconds?.div(60)
-                var hours : Double? = minutes?.div(60)
-                seconds = seconds?.rem(60)
-                minutes = minutes?.rem(60);
-                findViewById<TextView>(R.id.secondsText).text = "${seconds?.roundToInt()}"
-                findViewById<TextView>(R.id.minutesText).text = "${minutes?.roundToInt()}"
-                findViewById<TextView>(R.id.hoursText).text = "${hours?.roundToInt()}"
-                Log.d(MyTag, "${seconds?.roundToInt()},${minutes?.roundToInt()}, ${hours?.roundToInt()} ")
-
-            } else {
-                showMessage(getString(R.string.error_serverDown))
-            }
-        }
+    fun getCharacterData(){
+        findViewById<TextView>(R.id.nameText).text = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("username", null)
+        findViewById<TextView>(R.id.levelText).text = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("level", null)
+        findViewById<TextView>(R.id.locationText).text = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("location", null)
+        var seconds : Double? = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("playtime", null)?.toDouble()
+        var minutes : Double? = seconds?.div(60)
+        var hours : Double? = minutes?.div(60)
+        seconds = seconds?.rem(60)
+        minutes = minutes?.rem(60);
+        findViewById<TextView>(R.id.secondsText).text = "${seconds?.roundToInt()}"
+        findViewById<TextView>(R.id.minutesText).text = "${minutes?.roundToInt()}"
+        findViewById<TextView>(R.id.hoursText).text = "${hours?.roundToInt()}"
     }
 
     private fun showMessage(text: String){

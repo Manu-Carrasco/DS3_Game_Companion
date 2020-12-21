@@ -1,15 +1,13 @@
 package com.example.ds3companion
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import com.example.ds3companion.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -17,6 +15,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlin.math.roundToInt
 
 class LoginActivity : AppCompatActivity() {
 
@@ -83,6 +82,8 @@ class LoginActivity : AppCompatActivity() {
                         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
+                                readUser()
+
                                 showMessage("signInWithEmail:success")
                             } else {
                                 showMessage("Authentication failed")
@@ -98,6 +99,23 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                 }
+    }
+
+    private fun readUser() {
+        firestore.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
+            if(snapshot.exists()){
+                //Obtenemos datos
+                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().clear().commit()
+                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("uid", auth.currentUser?.uid.toString()).apply()
+                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("username", snapshot.getString("username")).apply()
+                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("equipment", snapshot.getString("equipment")).apply()
+                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("level", snapshot.getString("level")).apply()
+                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("location", snapshot.getString("location")).apply()
+                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("playtime", snapshot.getString("playtime")).apply()
+            } else {
+                showMessage(getString(R.string.error_serverDown))
+            }
+        }
     }
 
     private fun showMessage(text: String){
