@@ -1,26 +1,41 @@
 <resources>
     <string name="app_name">DS3Companion</string>
+
     <string name="TAG_Chat">Chat</string>
     <string name="tab_bosses_tittle">Bosses</string>
     <string name="tab_chat_tittle">Chat</string>
     <string name="tab_accounts_tittle">Accounts</string>
+
     <string name="button_register">Register</string>
     <string name="button_login">Log In</string>
     <string name="button_logout">Log Out</string>
     <string name="button_send">Send</string>
+
     <string name="message_welcome">Welcome!</string>
+    <string name="message_wantlogout">Want to lout out?</string>
     <string name="message_userCreated">User created</string>
+    <string name="message_userLogged">User logged</string>
     <string name="message_messageSend">Success uploading message</string>
+
     <string name="hint_enter_email">Enter your email here</string>
     <string name="hint_enter_password">Enter your password here</string>
     <string name="hint_enter_username">Enter your username here</string>
+
     <string name="error_email_invalid">Email is not Valid</string>
     <string name="error_password_invalid">Password must be at least %d characters long and contain at least a number among them</string>
     <string name="error_email_or_password">Email or password are not correct, try again</string>
-    <string name="error_signUp">Error signing up, try again.</string>
+    <string name="error_serverDown">Server is down, try in a few minutes</string>
+    <string name="error_logging">Error logging in, try again</string>
     <string name="error_messageLost">Error uploading message</string>
+    <string name="error_signUp">Error signing up, try again.</string>
+
     <string name="event_registerClick">registerButtonClick</string>
     <string name="event_loginClick">loginButtonClick</string>
+    <string name="event_loginCorrect">loginCorrect</string>
+    <string name="event_registerCorrect">registerCorrect</string>
+    <string name="event_infoBosses">infoBosses</string>
+
+
     <string name="sharedPreferences_name">test</string>
     <string name="sharedPreferences_string1">firstkey</string>
     <string name="sharedPreferences_string2">value</string>
@@ -28,17 +43,26 @@
     <string name="sharedPreferences_username">username</string>
     <string name="sharedPreferences_email">email</string>
     <string name="sharedPreferences_password">password</string>
+
     <string name="userclass_class1">warrior</string>
+    <string name="userclass_class2">mage</string>
+    <string name="userclass_class3">archer</string>
+    <string name="class_startlocation">Dungeon</string>
     <string name="class_legs">Legs</string>
     <string name="class_arms">arms</string>
     <string name="class_chest">chest</string>
     <string name="class_head">head</string>
     <string name="class_level">level</string>
     <string name="class_location">location</string>
+    <string name="class_equipment">equipment</string>
     <string name="class_name">name</string>
-    <string name="class_playtime">playTime</string>
+    <string name="class_playTime">playTime</string>
+    <string name="class_playtime">playtime</string>
     <string name="class_weapon1">weapon1</string>
     <string name="class_weapon2">weapon2</string>
+    <string name="class_uid">uid</string>
+    <string name="class_userdata">UserData</string>
+
     <string name="name_boss1">Sabio de Cristal</string>
     <string name="name_boss2">Vigilante del Abismo</string>
     <string name="name_boss3">Principe Lothric</string>

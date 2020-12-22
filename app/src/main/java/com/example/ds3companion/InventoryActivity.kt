@@ -7,46 +7,48 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.example.ds3companion.model.Character
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlin.math.roundToInt
 
-private lateinit var firestore: FirebaseFirestore
-var char: Character? = null
+
 
 class InventoryActivity : AppCompatActivity() {
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
+    private val MyTag = "Datos"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
         firestore = Firebase.firestore
-        getCharacterData("warrior")
+        auth = Firebase.auth
+        getCharacterData()
+        val uid = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_uid), null)
+        Log.d(MyTag, "$uid")
     }
 
-    fun getCharacterData(userClass:String){
-        firestore.collection("classes").document(userClass).get().addOnSuccessListener { snapshot ->
-            if(snapshot.exists()){
-                //Obtenemos datos
-                //char = snapshot.toObject(Character::class.java)
-                findViewById<TextView>(R.id.nameText).text = snapshot.getString("name")
-                findViewById<TextView>(R.id.levelText).text = snapshot.getString("level")
-                findViewById<TextView>(R.id.locationText).text = snapshot.getString("location")
+    fun getCharacterData(){
+        findViewById<TextView>(R.id.nameText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.sharedPreferences_username), null)
+        findViewById<TextView>(R.id.levelText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_level), null)
+        findViewById<TextView>(R.id.locationText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_location), null)
+        var seconds : Double? = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_playtime), null)?.toDouble()
+        var minutes : Double? = seconds?.div(60)
+        var hours : Double? = minutes?.div(60)
+        seconds = seconds?.rem(60)
+        minutes = minutes?.rem(60);
+        findViewById<TextView>(R.id.secondsText).text = "${seconds?.roundToInt()}"
+        findViewById<TextView>(R.id.minutesText).text = "${minutes?.roundToInt()}"
+        findViewById<TextView>(R.id.hoursText).text = "${hours?.roundToInt()}"
+    }
 
-                var seconds : Double? = snapshot.getString("playTime")?.toDouble();
-                var minutes : Double? = seconds?.div(60)
-                var hours : Double? = minutes?.div(60)
-                seconds = seconds?.rem(60)
-                minutes = minutes?.rem(60);
-                findViewById<TextView>(R.id.secondsText).text = "${seconds?.roundToInt()}"
-                findViewById<TextView>(R.id.minutesText).text = "${minutes?.roundToInt()}"
-                findViewById<TextView>(R.id.hoursText).text = "${hours?.roundToInt()}"
-                Log.d("datos", "${seconds?.roundToInt()},${minutes?.roundToInt()}, ${hours?.roundToInt()} ")
-
-            }else{
-                //No existe
-            }
-        }
+    private fun showMessage(text: String){
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show()
     }
 
 }

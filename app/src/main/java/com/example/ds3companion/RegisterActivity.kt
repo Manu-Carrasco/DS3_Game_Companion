@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ds3companion.model.User
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -87,9 +88,9 @@ class RegisterActivity : AppCompatActivity() {
                             val aux = (0..4).random()
                             var inventory = ""
                             when(aux){
-                                1 -> inventory = "warrior"
-                                2 -> inventory = "mage"
-                                3 -> inventory = "archer"
+                                1 -> inventory = getString(R.string.userclass_class1)
+                                2 -> inventory = getString(R.string.userclass_class2)
+                                3 -> inventory = getString(R.string.userclass_class3)
                             }
 
                             val user = User(userId = userId, username = username, password = password, equipment = inventory, email = email)
@@ -102,6 +103,7 @@ class RegisterActivity : AppCompatActivity() {
                                         finish()
                                         if (it.isSuccessful){
                                             showMessage(getString(R.string.message_userCreated))
+                                            Firebase.analytics.logEvent(getString(R.string.event_registerCorrect), null)
                                         } else {
                                             showMessage(getString(R.string.error_signUp))
                                         }

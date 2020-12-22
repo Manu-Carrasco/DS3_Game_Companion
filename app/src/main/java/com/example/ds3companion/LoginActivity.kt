@@ -1,22 +1,22 @@
 package com.example.ds3companion
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import com.example.ds3companion.model.User
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlin.math.roundToInt
 
 class LoginActivity : AppCompatActivity() {
 
@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             if(username.isEmpty() || password.isEmpty()){
                 usernameEditText.error = getString(R.string.hint_enter_username)
                 passwordEditText.error = getString(R.string.hint_enter_password)
-                showMessage("Username or Password is not correct")
+                showMessage(getString(R.string.error_email_or_password))
                 return@setOnClickListener
             }
 
@@ -71,22 +71,51 @@ class LoginActivity : AppCompatActivity() {
                 .get()
                 .addOnCompleteListener{
                     var found = false
+                    var email = ""
                     for(document in it.result!!){
-                        if(document.data.getValue("username") == username && document.data.getValue("password") == password) {
+                        if(document.data.getValue(getString(R.string.sharedPreferences_username)) == username && document.data.getValue(getString(R.string.sharedPreferences_password)) == password) {
                             found = true;
+                            email = document.data.getValue(getString(R.string.sharedPreferences_email)).toString()
                         }
                     }
-                    if(found){
+                    if(found) {
                         // Show account characters
-                        showMessage("User Logged")
-                        progressBar.visibility = View.GONE
-                        finish()
+                        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Firebase.analytics.logEvent(getString(R.string.event_loginCorrect), null)
+                                readUser()
+                                showMessage(getString(R.string.message_userLogged))
+                            } else {
+                                showMessage(getString(R.string.error_logging))
+                            }
+                            progressBar.visibility = View.GONE
+                            finish()
+                        }
                     } else {
                         // Doesn't found player account
                         progressBar.visibility = View.GONE
-                        showMessage("Username or Password is not correct")
+                        showMessage(getString(R.string.error_email_or_password))
                     }
+
                 }
+    }
+
+    private fun readUser() {
+        firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
+            if(snapshot.exists()){
+                //Obtenemos datos
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().clear().commit()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_uid), auth.currentUser?.uid.toString()).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.sharedPreferences_username), snapshot.getString(getString(R.string.sharedPreferences_username))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_equipment), snapshot.getString(getString(R.string.class_equipment))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_level), snapshot.getString(getString(R.string.class_level))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_location), snapshot.getString(getString(R.string.class_location))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_playtime), snapshot.getString(getString(R.string.class_playtime))).apply()
+            } else {
+                showMessage(getString(R.string.error_serverDown))
+            }
+        }
     }
 
     private fun showMessage(text: String){
