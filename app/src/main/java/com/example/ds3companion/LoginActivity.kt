@@ -9,6 +9,7 @@ import android.util.Patterns
 import android.view.View
 import android.widget.*
 import com.example.ds3companion.model.User
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -82,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
                         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
+                                Firebase.analytics.logEvent(getString(R.string.event_loginCorrect), null)
                                 readUser()
                                 showMessage(getString(R.string.message_userLogged))
                             } else {

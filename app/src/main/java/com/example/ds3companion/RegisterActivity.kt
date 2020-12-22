@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ds3companion.model.User
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -102,6 +103,7 @@ class RegisterActivity : AppCompatActivity() {
                                         finish()
                                         if (it.isSuccessful){
                                             showMessage(getString(R.string.message_userCreated))
+                                            Firebase.analytics.logEvent(getString(R.string.event_registerCorrect), null)
                                         } else {
                                             showMessage(getString(R.string.error_signUp))
                                         }

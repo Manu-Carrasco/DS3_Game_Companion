@@ -31,6 +31,10 @@
 
     <string name="event_registerClick">registerButtonClick</string>
     <string name="event_loginClick">loginButtonClick</string>
+    <string name="event_loginCorrect">loginCorrect</string>
+    <string name="event_registerCorrect">registerCorrect</string>
+    <string name="event_infoBosses">infoBosses</string>
+
 
     <string name="sharedPreferences_name">test</string>
     <string name="sharedPreferences_string1">firstkey</string>
