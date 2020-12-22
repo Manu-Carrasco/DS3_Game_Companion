@@ -87,9 +87,9 @@ class RegisterActivity : AppCompatActivity() {
                             val aux = (0..4).random()
                             var inventory = ""
                             when(aux){
-                                1 -> inventory = "warrior"
-                                2 -> inventory = "mage"
-                                3 -> inventory = "archer"
+                                1 -> inventory = getString(R.string.userclass_class1)
+                                2 -> inventory = getString(R.string.userclass_class2)
+                                3 -> inventory = getString(R.string.userclass_class3)
                             }
 
                             val user = User(userId = userId, username = username, password = password, equipment = inventory, email = email)

@@ -29,15 +29,15 @@ class InventoryActivity : AppCompatActivity() {
         firestore = Firebase.firestore
         auth = Firebase.auth
         getCharacterData()
-        val uid = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("uid", null)
+        val uid = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_uid), null)
         Log.d(MyTag, "$uid")
     }
 
     fun getCharacterData(){
-        findViewById<TextView>(R.id.nameText).text = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("username", null)
-        findViewById<TextView>(R.id.levelText).text = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("level", null)
-        findViewById<TextView>(R.id.locationText).text = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("location", null)
-        var seconds : Double? = getSharedPreferences("UserData", Context.MODE_PRIVATE).getString("playtime", null)?.toDouble()
+        findViewById<TextView>(R.id.nameText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.sharedPreferences_username), null)
+        findViewById<TextView>(R.id.levelText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_level), null)
+        findViewById<TextView>(R.id.locationText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_location), null)
+        var seconds : Double? = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_playtime), null)?.toDouble()
         var minutes : Double? = seconds?.div(60)
         var hours : Double? = minutes?.div(60)
         seconds = seconds?.rem(60)

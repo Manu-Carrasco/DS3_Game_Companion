@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
             if(username.isEmpty() || password.isEmpty()){
                 usernameEditText.error = getString(R.string.hint_enter_username)
                 passwordEditText.error = getString(R.string.hint_enter_password)
-                showMessage("Username or Password is not correct")
+                showMessage(getString(R.string.error_email_or_password))
                 return@setOnClickListener
             }
 
@@ -72,9 +72,9 @@ class LoginActivity : AppCompatActivity() {
                     var found = false
                     var email = ""
                     for(document in it.result!!){
-                        if(document.data.getValue("username") == username && document.data.getValue("password") == password) {
+                        if(document.data.getValue(getString(R.string.sharedPreferences_username)) == username && document.data.getValue(getString(R.string.sharedPreferences_password)) == password) {
                             found = true;
-                            email = document.data.getValue("email").toString()
+                            email = document.data.getValue(getString(R.string.sharedPreferences_email)).toString()
                         }
                     }
                     if(found) {
@@ -83,35 +83,33 @@ class LoginActivity : AppCompatActivity() {
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 readUser()
-
-                                showMessage("signInWithEmail:success")
+                                showMessage(getString(R.string.message_userLogged))
                             } else {
-                                showMessage("Authentication failed")
+                                showMessage(getString(R.string.error_logging))
                             }
-                            showMessage("User Logged")
                             progressBar.visibility = View.GONE
                             finish()
                         }
                     } else {
                         // Doesn't found player account
                         progressBar.visibility = View.GONE
-                        showMessage("Username or Password is not correct")
+                        showMessage(getString(R.string.error_email_or_password))
                     }
 
                 }
     }
 
     private fun readUser() {
-        firestore.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
+        firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
             if(snapshot.exists()){
                 //Obtenemos datos
-                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().clear().commit()
-                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("uid", auth.currentUser?.uid.toString()).apply()
-                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("username", snapshot.getString("username")).apply()
-                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("equipment", snapshot.getString("equipment")).apply()
-                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("level", snapshot.getString("level")).apply()
-                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("location", snapshot.getString("location")).apply()
-                getSharedPreferences("UserData", Context.MODE_PRIVATE).edit().putString("playtime", snapshot.getString("playtime")).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().clear().commit()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_uid), auth.currentUser?.uid.toString()).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.sharedPreferences_username), snapshot.getString(getString(R.string.sharedPreferences_username))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_equipment), snapshot.getString(getString(R.string.class_equipment))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_level), snapshot.getString(getString(R.string.class_level))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_location), snapshot.getString(getString(R.string.class_location))).apply()
+                getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_playtime), snapshot.getString(getString(R.string.class_playtime))).apply()
             } else {
                 showMessage(getString(R.string.error_serverDown))
             }
