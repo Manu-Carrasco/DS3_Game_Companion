@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.ds3companion.InventoryActivity
@@ -26,6 +27,8 @@ class AccountsFragment: Fragment(){
     private lateinit var loginButton: Button
     private lateinit var logoutButton: Button
     private lateinit var welcomeText: TextView
+    private lateinit var loginText: TextView
+    private lateinit var registerText: TextView
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
@@ -54,7 +57,9 @@ class AccountsFragment: Fragment(){
         registerButton = parentView.findViewById<Button>(R.id.registerButton)
         loginButton = parentView.findViewById<Button>(R.id.loginButton)
         logoutButton = parentView.findViewById<Button>(R.id.logOutButton)
-        welcomeText = parentView.findViewById<Button>(R.id.welcomeText)
+        welcomeText = parentView.findViewById<TextView>(R.id.welcomeText)
+        loginText = parentView.findViewById<TextView>(R.id.loginText)
+        registerText = parentView.findViewById<TextView>(R.id.registerText)
     }
 
     private fun initListeners(){
@@ -80,6 +85,8 @@ class AccountsFragment: Fragment(){
             // Local account found
             registerButton.visibility = View.GONE
             loginButton.visibility = View.GONE
+            loginText.visibility = View.GONE
+            registerText.visibility = View.GONE
             logoutButton.visibility = View.VISIBLE
             welcomeText.visibility = View.VISIBLE
             val intent = Intent(activity, InventoryActivity::class.java)
@@ -87,6 +94,8 @@ class AccountsFragment: Fragment(){
         } else {
             registerButton.visibility = View.VISIBLE
             loginButton.visibility = View.VISIBLE
+            loginText.visibility = View.VISIBLE
+            registerText.visibility = View.VISIBLE
             logoutButton.visibility = View.GONE
             welcomeText.visibility = View.GONE
         }

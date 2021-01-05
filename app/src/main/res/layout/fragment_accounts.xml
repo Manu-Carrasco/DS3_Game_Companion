@@ -6,20 +6,50 @@
     android:gravity="center"
     android:background="@drawable/fondos1">
 
+    <ImageView
+        android:layout_width="@dimen/accountsMarginX"
+        android:layout_height="@dimen/accountsMarginX"
+        android:layout_marginVertical="@dimen/accountsMarginY"
+        android:src="@drawable/ic_accounts"/>
+
+    <TextView
+        android:id="@+id/loginText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textStyle="bold|italic"
+        android:text="@string/message_login"/>
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMargin"
+        android:layout_marginVertical="@dimen/accountsMarginY"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
         android:backgroundTint="@color/tabs"
+        android:textStyle="bold"
+        android:drawableRight="@drawable/ic_round_login"
         android:text="@string/button_login"/>
+
+    <TextView
+        android:id="@+id/registerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textStyle="bold|italic"
+        android:text="@string/message_register"/>
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMargin"
+        android:layout_marginVertical="@dimen/accountsMarginY"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
         android:backgroundTint="@color/tabs"
+        android:textStyle="bold"
+        android:drawableRight="@drawable/ic_round_register"
         android:text="@string/button_register"/>
     <TextView
         android:id="@+id/welcomeText"
@@ -27,14 +57,18 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:gravity="center"
-        android:text="@string/message_wantlogout"/>
+        android:textStyle="bold|italic"
+        android:text="@string/message_wantLogOut"/>
 
     <Button
         android:id="@+id/logOutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMargin"
+        android:layout_marginVertical="@dimen/accountsMarginY"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
         android:backgroundTint="@color/tabs"
+        android:textStyle="bold"
+        android:drawableRight="@drawable/ic_round_logout"
         android:text="@string/button_logout"/>
 
 

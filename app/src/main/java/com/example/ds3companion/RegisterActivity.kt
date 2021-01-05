@@ -85,7 +85,7 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener{
                     if(it.isSuccessful){
                         auth.currentUser?.uid?.let{ userId ->
-                            val aux = (0..4).random()
+                            val aux = (0 until 4).random()
                             var inventory = ""
                             when(aux){
                                 1 -> inventory = getString(R.string.userclass_class1)

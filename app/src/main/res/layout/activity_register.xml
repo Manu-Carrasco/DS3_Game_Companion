@@ -9,43 +9,55 @@
     android:background="@drawable/fondos1"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:layout_width="@dimen/accountsMarginX"
+        android:layout_height="@dimen/accountsMarginX"
+        android:layout_marginVertical="@dimen/accountsMarginY"
+        android:src="@drawable/ic_accounts"/>
 
     <EditText
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/character_marginTiny"
+        android:layout_margin="@dimen/accountsMarginY"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:textStyle="bold"
         android:inputType="text"
         android:gravity="center"
+        android:drawableLeft="@drawable/ic_round_username"
         android:hint="@string/hint_enter_username"/>
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/character_marginTiny"
+        android:layout_margin="@dimen/accountsMarginY"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:textStyle="bold"
         android:inputType="textEmailAddress"
         android:gravity="center"
+        android:drawableLeft="@drawable/ic_round_email_24"
         android:hint="@string/hint_enter_email"/>
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/character_marginTiny"
+        android:layout_margin="@dimen/accountsMarginY"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:textStyle="bold"
         android:inputType="textPassword"
         android:gravity="center"
+        android:drawableLeft="@drawable/ic_round_password"
         android:hint="@string/hint_enter_password"/>
     <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/character_marginTiny"
-        android:layout_marginTop="@dimen/character_marginTiny"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
+        android:textStyle="bold"
+        android:layout_marginVertical="@dimen/accountsMarginY"
         android:backgroundTint="@color/tabs"
         android:text="@string/button_register"/>
     <ProgressBar

@@ -9,39 +9,52 @@
     android:background="@drawable/fondos1"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:layout_width="@dimen/accountsMarginX"
+        android:layout_height="@dimen/accountsMarginX"
+        android:layout_marginVertical="@dimen/accountsMarginY"
+        android:src="@drawable/ic_accounts"/>
+
     <EditText
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMargin"
+        android:layout_marginHorizontal="@dimen/accountsMarginY"
+        android:layout_marginVertical="@dimen/accountsMarginY"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:textStyle="bold"
         android:inputType="text"
         android:gravity="center"
+        android:drawableLeft="@drawable/ic_round_username"
         android:hint="@string/hint_enter_username"/>
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMargin"
+        android:layout_marginHorizontal="@dimen/accountsMarginY"
+        android:layout_marginVertical="@dimen/accountsMarginY"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
+        android:textStyle="bold"
         android:inputType="textPassword"
         android:gravity="center"
+        android:drawableLeft="@drawable/ic_round_password"
         android:hint="@string/hint_enter_password"/>
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMargin"
-        android:layout_marginTop="@dimen/accountsMargin"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
+        android:layout_marginVertical="@dimen/accountsMarginY"
         android:backgroundTint="@color/tabs"
         android:text="@string/button_login"/>
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/accountsMargin"
+        android:layout_marginTop="@dimen/character_marginTiny"
         android:visibility="invisible"/>
 
 </LinearLayout>

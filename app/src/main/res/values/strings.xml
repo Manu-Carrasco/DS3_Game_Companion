@@ -12,7 +12,9 @@
     <string name="button_send">Send</string>
 
     <string name="message_welcome">Welcome!</string>
-    <string name="message_wantlogout">Want to lout out?</string>
+    <string name="message_login">Do you have an account?</string>
+    <string name="message_register">Do you want to create a new account?</string>
+    <string name="message_wantLogOut">Want to Log out?</string>
     <string name="message_userCreated">User created</string>
     <string name="message_userLogged">User logged</string>
     <string name="message_messageSend">Success uploading message</string>

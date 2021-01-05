@@ -13,6 +13,8 @@
     <dimen name="bosses_nameSize">24dp</dimen>
 
     <dimen name="accountsMargin">60dp</dimen>
+    <dimen name="accountsMarginY">30dp</dimen>
+    <dimen name="accountsMarginX">120dp</dimen>
     <dimen name="character_paddingHorizontal">10dp</dimen>
     <dimen name="character_paddingVertical">5dp</dimen>
     <dimen name="character_marginTiny">16dp</dimen>
