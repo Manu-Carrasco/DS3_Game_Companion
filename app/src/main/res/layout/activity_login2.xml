@@ -50,6 +50,16 @@
         android:layout_marginVertical="@dimen/accountsMarginY"
         android:backgroundTint="@color/tabs"
         android:text="@string/button_login"/>
+    <Button
+        android:id="@+id/loginGoogleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/googleicon"
+        android:backgroundTint="@color/white"
+        android:text="@string/button_login"
+        android:textColor="@color/black"/>
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

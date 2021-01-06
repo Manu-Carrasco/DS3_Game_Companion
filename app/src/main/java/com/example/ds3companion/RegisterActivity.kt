@@ -3,7 +3,6 @@ package com.example.ds3companion
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -11,8 +10,17 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ds3companion.model.User
+import com.google.android.gms.auth.api.phone.SmsRetriever.getClient
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.safetynet.SafetyNet.getClient
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -26,7 +34,10 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
+
+
     private lateinit var registerButton: Button
+    private lateinit var googleButton: Button
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var usernameEditText: EditText
@@ -45,6 +56,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initViews(){
         registerButton = findViewById<Button>(R.id.registerButton)
+        googleButton = findViewById<Button>(R.id.registerGoogleButton)
         emailEditText = findViewById<EditText>(R.id.emailEditText)
         passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         usernameEditText = findViewById<EditText>(R.id.usernameEditText)
@@ -53,6 +65,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initListeners(){
         val registerButton: Button = registerButton
+        val googleButton: Button = googleButton
         registerButton.setOnClickListener{
 
            val username = usernameEditText.text.toString()
@@ -75,14 +88,16 @@ class RegisterActivity : AppCompatActivity() {
 
             registerUser(email, password, username)
         }
+        googleButton.setOnClickListener{
+            //signIn()
+        }
     }
 
     private fun registerUser(email: String, password: String, username: String){
         progressBar.visibility = View.VISIBLE
         registerButton.isEnabled = false
 
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener{
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                     if(it.isSuccessful){
                         auth.currentUser?.uid?.let{ userId ->
                             val aux = (0 until 4).random()
@@ -119,7 +134,7 @@ class RegisterActivity : AppCompatActivity() {
                         progressBar.visibility = View.GONE
                         registerButton.isEnabled = true
                     }
-                }
+        }
     }
 
     private fun isEmailValid(email: String): Boolean{
@@ -153,6 +168,11 @@ class RegisterActivity : AppCompatActivity() {
         }
         return (containsLetter && containsNumber)
     }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private fun showMessage(text: String){
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
