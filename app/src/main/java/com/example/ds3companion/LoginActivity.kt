@@ -87,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
             findOnlineAccount(username, password)
         }
         googleButton.setOnClickListener{
-            //signIn()
+            signIn()
         }
     }
 
