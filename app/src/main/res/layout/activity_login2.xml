@@ -41,21 +41,40 @@
         android:gravity="center"
         android:drawableLeft="@drawable/ic_round_password"
         android:hint="@string/hint_enter_password"/>
-    <Button
-        android:id="@+id/loginButton"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginHorizontal="@dimen/accountsMarginX"
-        android:layout_marginVertical="@dimen/bosses_textSize"
-        android:backgroundTint="@color/tabs"
-        android:text="@string/button_login"/>
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/character_marginTiny">
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/tabs"
+            android:drawableRight="@drawable/ic_round_login"
+            android:text="@string/button_login"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+
+        <Button
+            android:id="@+id/forgotPasswordButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:backgroundTint="@color/tabs"
+            android:textSize="@dimen/bosses_textSize"
+            android:text="@string/button_forgotPassword"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+    </LinearLayout>
     <Button
         android:id="@+id/loginGoogleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/accountsMarginX"
-        android:layout_marginVertical="@dimen/bosses_textSize"
         android:textStyle="bold"
         android:drawableLeft="@drawable/googleicon"
         android:backgroundTint="@color/white"

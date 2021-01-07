@@ -11,6 +11,7 @@
     <string name="button_logout">Log Out</string>
     <string name="button_send">Send</string>
     <string name="button_delete">Delete</string>
+    <string name="button_forgotPassword">Forgot Password?</string>
 
     <string name="message_welcome">Welcome!</string>
     <string name="message_login">Do you have an account?</string>

@@ -1,6 +1,7 @@
 package com.example.ds3companion
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.example.ds3companion.LoginActivity.Companion.RC_SIGN_IN
 import com.example.ds3companion.model.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -39,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var googleButton: Button
     private lateinit var loginButton: Button
+    private lateinit var forgotButton: Button
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var progressBar: ProgressBar
@@ -63,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
     private fun initViews() {
         loginButton = findViewById<Button>(R.id.loginButton)
         googleButton = findViewById<Button>(R.id.loginGoogleButton)
+        forgotButton = findViewById<Button>(R.id.forgotPasswordButton)
         usernameEditText = findViewById<EditText>(R.id.usernameEditText)
         passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         progressBar = findViewById(R.id.progressBar)
@@ -71,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
     private fun initListeners() {
         val registerButton: Button = loginButton
         val googleButton: Button = googleButton
+        val forgotButton: Button = forgotButton
         registerButton.setOnClickListener{
 
             val username = usernameEditText.text.toString()
@@ -89,7 +94,34 @@ class LoginActivity : AppCompatActivity() {
         googleButton.setOnClickListener{
             signIn()
         }
+        forgotButton.setOnClickListener{
+//            val builder = AlertDialog.Builder(this)
+//            builder.setTitle(getString(R.string.button_forgotPassword))
+//            val view = layoutInflater.inflate(R.layout.dialog_forgot_password,null)
+//            val username = view.findViewById<EditText>(R.id.et_username)
+//            builder.setView(view)
+//            builder.setPositiveButton("Reset", DialogInterface.OnClickListener{ _, _ ->
+//                forgotPassword(username)
+//            })
+//            builder.setNegativeButton("close", DialogInterface.OnClickListener{ _, _ -> })
+//            builder.show()
+        }
     }
+
+//    private fun forgotPassword(username: EditText){
+//        if(username.text.toString().isEmpty()) {
+//            return
+//        }
+//        if (!Patterns.EMAIL_ADDRESS.matcher(username.text.toString()).matches()) {
+//            return
+//        }
+//        auth.sendPasswordResetEmail(username.text.toString())
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        showMessage("Message Send")
+//                    }
+//                }
+//    }
 
     private fun findOnlineAccount(username: String, password: String){
         firestore
