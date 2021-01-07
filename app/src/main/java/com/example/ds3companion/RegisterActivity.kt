@@ -1,8 +1,8 @@
 package com.example.ds3companion
 
-import android.content.Intent
+import android.accounts.Account
+import android.accounts.AccountManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -10,17 +10,8 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ds3companion.model.User
-import com.google.android.gms.auth.api.phone.SmsRetriever.getClient
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.safetynet.SafetyNet.getClient
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -89,7 +80,19 @@ class RegisterActivity : AppCompatActivity() {
             registerUser(email, password, username)
         }
         googleButton.setOnClickListener{
-            //signIn()
+            val am: AccountManager = AccountManager.get(this) // "this" references the current Context
+            val possibleEmails: Array<out Account> = am.getAccountsByType("com.google")
+            if(possibleEmails.isNotEmpty()){
+                val email: String = possibleEmails[0].name.toString()
+                emailEditText.setText(email)
+
+                val parts: List<out String> = email.split("@")
+                val user: String = parts[0]
+                usernameEditText.setText(user)
+
+            } else {
+                showMessage("There are no Google accounts registrated in your device")
+            }
         }
     }
 
