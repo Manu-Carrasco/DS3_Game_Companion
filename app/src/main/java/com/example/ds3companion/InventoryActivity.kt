@@ -1,6 +1,7 @@
 package com.example.ds3companion
 
 import android.content.Context
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.AttributeSet
@@ -19,6 +20,7 @@ import kotlin.math.roundToInt
 
 
 class InventoryActivity : AppCompatActivity() {
+    private lateinit var tabsSound: MediaPlayer
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private val MyTag = "Datos"
@@ -31,6 +33,12 @@ class InventoryActivity : AppCompatActivity() {
         getCharacterData()
         val uid = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_uid), null)
         Log.d(MyTag, "$uid")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        tabsSound = MediaPlayer.create(this, R.raw.openingeffect)
+        tabsSound?.start()
     }
 
     fun getCharacterData(){
