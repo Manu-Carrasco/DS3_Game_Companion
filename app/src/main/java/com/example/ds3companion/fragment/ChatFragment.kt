@@ -1,5 +1,6 @@
 package com.example.ds3companion.fragment
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,6 +27,8 @@ class ChatFragment: Fragment(){
 
     private val MyTag = "Chat"
 
+    private lateinit var tabsSound: MediaPlayer
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var messageEditText: EditText
     private lateinit var sendButton: Button
@@ -44,6 +47,10 @@ class ChatFragment: Fragment(){
         firestore =  Firebase.firestore
         initViews(view)
         initRecyclerView()
+
+        tabsSound = MediaPlayer.create(context, R.raw.accepteffect)
+        tabsSound?.start()
+
         getChats()
         initListeners()
 

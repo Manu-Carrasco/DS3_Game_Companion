@@ -2,6 +2,7 @@ package com.example.ds3companion.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,8 @@ class AccountsFragment: Fragment(){
     private lateinit var loginText: TextView
     private lateinit var registerText: TextView
 
+    private lateinit var tabsSound: MediaPlayer
+
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
@@ -47,6 +50,9 @@ class AccountsFragment: Fragment(){
         initViews(view)
         initListeners()
         saveData()
+
+        tabsSound = MediaPlayer.create(context, R.raw.accepteffect)
+        tabsSound?.start()
 
         auth = Firebase.auth
         firestore = Firebase.firestore

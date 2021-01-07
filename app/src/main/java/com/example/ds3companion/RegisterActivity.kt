@@ -1,9 +1,8 @@
 package com.example.ds3companion
 
-import android.content.Intent
+import android.accounts.Account
+import android.accounts.AccountManager
 import android.os.Bundle
-import android.util.Log
-import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -26,7 +25,10 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
+
+
     private lateinit var registerButton: Button
+    private lateinit var googleButton: Button
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var usernameEditText: EditText
@@ -45,6 +47,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initViews(){
         registerButton = findViewById<Button>(R.id.registerButton)
+        googleButton = findViewById<Button>(R.id.registerGoogleButton)
         emailEditText = findViewById<EditText>(R.id.emailEditText)
         passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         usernameEditText = findViewById<EditText>(R.id.usernameEditText)
@@ -53,6 +56,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initListeners(){
         val registerButton: Button = registerButton
+        val googleButton: Button = googleButton
         registerButton.setOnClickListener{
 
            val username = usernameEditText.text.toString()
@@ -75,14 +79,28 @@ class RegisterActivity : AppCompatActivity() {
 
             registerUser(email, password, username)
         }
+        googleButton.setOnClickListener{
+            val am: AccountManager = AccountManager.get(this) // "this" references the current Context
+            val possibleEmails: Array<out Account> = am.getAccountsByType("com.google")
+            if(possibleEmails.isNotEmpty()){
+                val email: String = possibleEmails[0].name.toString()
+                emailEditText.setText(email)
+
+                val parts: List<out String> = email.split("@")
+                val user: String = parts[0]
+                usernameEditText.setText(user)
+
+            } else {
+                showMessage("There are no Google accounts registrated in your device")
+            }
+        }
     }
 
     private fun registerUser(email: String, password: String, username: String){
         progressBar.visibility = View.VISIBLE
         registerButton.isEnabled = false
 
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener{
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                     if(it.isSuccessful){
                         auth.currentUser?.uid?.let{ userId ->
                             val aux = (0 until 4).random()
@@ -119,7 +137,7 @@ class RegisterActivity : AppCompatActivity() {
                         progressBar.visibility = View.GONE
                         registerButton.isEnabled = true
                     }
-                }
+        }
     }
 
     private fun isEmailValid(email: String): Boolean{
@@ -153,6 +171,11 @@ class RegisterActivity : AppCompatActivity() {
         }
         return (containsLetter && containsNumber)
     }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private fun showMessage(text: String){
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()

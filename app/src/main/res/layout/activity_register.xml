@@ -10,8 +10,8 @@
     tools:context=".RegisterActivity">
 
     <ImageView
-        android:layout_width="@dimen/accountsMarginX"
-        android:layout_height="@dimen/accountsMarginX"
+        android:layout_width="@dimen/character_marginYSlot1"
+        android:layout_height="@dimen/character_marginYSlot1"
         android:layout_marginVertical="@dimen/accountsMarginY"
         android:src="@drawable/ic_accounts"/>
 
@@ -19,7 +19,8 @@
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMarginY"
+        android:layout_marginHorizontal="@dimen/bosses_nameSize"
+        android:layout_marginVertical="@dimen/bosses_textSize"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textStyle="bold"
@@ -31,7 +32,8 @@
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMarginY"
+        android:layout_marginHorizontal="@dimen/bosses_nameSize"
+        android:layout_marginVertical="@dimen/bosses_textSize"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textStyle="bold"
@@ -43,7 +45,8 @@
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/accountsMarginY"
+        android:layout_marginHorizontal="@dimen/bosses_nameSize"
+        android:layout_marginVertical="@dimen/bosses_textSize"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textStyle="bold"
@@ -57,9 +60,18 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/accountsMarginX"
         android:textStyle="bold"
-        android:layout_marginVertical="@dimen/accountsMarginY"
         android:backgroundTint="@color/tabs"
         android:text="@string/button_register"/>
+    <Button
+        android:id="@+id/registerGoogleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/googleicon"
+        android:backgroundTint="@color/white"
+        android:text="@string/button_register"
+        android:textColor="@color/black"/>
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
