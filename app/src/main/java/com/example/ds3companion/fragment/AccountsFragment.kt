@@ -11,10 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.ds3companion.InventoryActivity
-import com.example.ds3companion.R
-import com.example.ds3companion.RegisterActivity
-import com.example.ds3companion.LoginActivity
+import com.example.ds3companion.*
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -27,9 +24,11 @@ class AccountsFragment: Fragment(){
     private lateinit var registerButton: Button
     private lateinit var loginButton: Button
     private lateinit var logoutButton: Button
+    private lateinit var deleteButton: Button
     private lateinit var welcomeText: TextView
     private lateinit var loginText: TextView
     private lateinit var registerText: TextView
+    private lateinit var deleteText: TextView
 
     private lateinit var tabsSound: MediaPlayer
 
@@ -66,6 +65,8 @@ class AccountsFragment: Fragment(){
         welcomeText = parentView.findViewById<TextView>(R.id.welcomeText)
         loginText = parentView.findViewById<TextView>(R.id.loginText)
         registerText = parentView.findViewById<TextView>(R.id.registerText)
+        deleteButton = parentView.findViewById<Button>(R.id.deleteAccountButton)
+        deleteText = parentView.findViewById<TextView>(R.id.deleteAccountText)
     }
 
     private fun initListeners(){
@@ -83,6 +84,21 @@ class AccountsFragment: Fragment(){
             auth.signOut()
             checkUserAvailability()
         }
+        deleteButton.setOnClickListener{
+            firestore
+                    .collection(Constants.COLLECTION_USERS)
+                    .get()
+                    .addOnCompleteListener {
+                        var email = auth.currentUser?.email
+                        for (document in it.result!!) {
+                            if (document.data.getValue(getString(R.string.sharedPreferences_email)) == email) {
+                                firestore.collection(Constants.COLLECTION_USERS).document(document.id).delete()
+                            }
+                        }
+                    }
+            auth.signOut()
+            checkUserAvailability()
+        }
     }
 
 
@@ -95,6 +111,8 @@ class AccountsFragment: Fragment(){
             registerText.visibility = View.GONE
             logoutButton.visibility = View.VISIBLE
             welcomeText.visibility = View.VISIBLE
+            deleteButton.visibility = View.VISIBLE
+            deleteText.visibility = View.VISIBLE
             val intent = Intent(activity, InventoryActivity::class.java)
             startActivity(intent)
         } else {
@@ -104,6 +122,8 @@ class AccountsFragment: Fragment(){
             registerText.visibility = View.VISIBLE
             logoutButton.visibility = View.GONE
             welcomeText.visibility = View.GONE
+            deleteButton.visibility = View.GONE
+            deleteText.visibility = View.GONE
         }
     }
 

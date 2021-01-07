@@ -59,7 +59,6 @@
         android:gravity="center"
         android:textStyle="bold|italic"
         android:text="@string/message_wantLogOut"/>
-
     <Button
         android:id="@+id/logOutButton"
         android:layout_width="match_parent"
@@ -70,6 +69,24 @@
         android:textStyle="bold"
         android:drawableRight="@drawable/ic_round_logout"
         android:text="@string/button_logout"/>
+    <TextView
+        android:id="@+id/deleteAccountText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textStyle="bold|italic"
+        android:text="@string/message_wantDelete"/>
+    <Button
+        android:id="@+id/deleteAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/accountsMarginY"
+        android:layout_marginHorizontal="@dimen/accountsMarginX"
+        android:backgroundTint="@color/tabs"
+        android:textStyle="bold"
+        android:drawableRight="@drawable/ic_baseline_delete"
+        android:text="@string/button_delete"/>
 
 
 </LinearLayout>
