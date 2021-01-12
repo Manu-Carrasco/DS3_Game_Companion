@@ -1,6 +1,6 @@
 package com.example.ds3companion
 
-import android.media.MediaPlayer
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -51,5 +52,24 @@ class MainActivity : AppCompatActivity() {
         adView.loadAd(adRequest)
 
         MobileAds.initialize(this)
+    }
+
+
+    override fun onBackPressed() {
+
+        val builder = AlertDialog.Builder(this)
+        if(isTaskRoot){
+            builder.setMessage("Do you want to exit App")
+            builder.setPositiveButton("YES") { _, _ ->
+                this.finish()
+            }
+            builder.setNegativeButton("NO") { dialog, _ ->
+                dialog.cancel()
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
+        } else{
+            super.onBackPressed()
+        }
     }
 }
