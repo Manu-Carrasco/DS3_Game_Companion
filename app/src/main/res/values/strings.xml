@@ -40,6 +40,8 @@
     <string name="event_registerCorrect">registerCorrect</string>
     <string name="event_infoBosses">infoBosses</string>
 
+    <string name="api_key">AIzaSyC5C5Qu3XNW7xh6uca40ATYFqvfG165bWc</string>
+    <string name="api_buttonGuides">See Guides</string>
 
     <string name="sharedPreferences_name">test</string>
     <string name="sharedPreferences_string1">firstkey</string>
