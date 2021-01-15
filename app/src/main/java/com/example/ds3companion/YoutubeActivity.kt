@@ -15,7 +15,9 @@ import com.google.android.youtube.player.*
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_youtube.*
 import kotlinx.android.synthetic.main.fragment_chat.*
+import kotlinx.coroutines.*
 import okhttp3.*
+import ru.gildor.coroutines.okhttp.await
 import java.io.IOException
 import kotlin.coroutines.coroutineContext
 
@@ -89,25 +91,34 @@ class YoutubeActivity : YouTubeBaseActivity() {
     }
 
     private fun getDateGson(){
-
-        val dateRequest = Request.Builder().url(dateURL).build()
         val client = OkHttpClient()
-        client.newCall(dateRequest).enqueue(object: Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                println("Algo ha ido mal al intentar sacar la info de youtube")
+        try {
+            GlobalScope.launch {
+                withContext(Dispatchers.IO){
+                    val dateRequest = Request.Builder().url(dateURL).build()
+                    client.newCall(dateRequest).enqueue(object: Callback {
+                        override fun onFailure(call: Call, e: IOException) {
+                            showMessage("Failed to connect to server, try later")
+                            println(e)
+                        }
+                        override fun onResponse(call: Call, response: Response) {
+                            dateJson = response.body?.string().toString()
+                            getYoutubeInfo(dateJson!!)
+                        }
+                    })
+                }
             }
-            override fun onResponse(call: Call, response: Response) {
-                dateJson = response.body?.string().toString()
-                getYoutubeInfo(dateJson!!)
-            }
-        })
-
+        } catch (e: IOException) {
+            showMessage("Failed to connect to server, try later")
+            println(e)
+            throw IOException("Some additional debug info: ${e.message}", e)
+        }
     }
 
     private fun getViewGson(){
 
-        val dateRequest = Request.Builder().url(viewsURL).build()
         val client = OkHttpClient()
+        val dateRequest = Request.Builder().url(viewsURL).build()
         client.newCall(dateRequest).enqueue(object: Callback {
             override fun onFailure(call: Call, e: IOException) {
                 println("Algo ha ido mal al intentar sacar la info de youtube")
@@ -122,8 +133,8 @@ class YoutubeActivity : YouTubeBaseActivity() {
 
     private fun getRelevanceGson(){
 
-        val dateRequest = Request.Builder().url(relevanceURL).build()
         val client = OkHttpClient()
+        val dateRequest = Request.Builder().url(relevanceURL).build()
         client.newCall(dateRequest).enqueue(object: Callback {
             override fun onFailure(call: Call, e: IOException) {
                 println("Algo ha ido mal al intentar sacar la info de youtube")
@@ -136,7 +147,9 @@ class YoutubeActivity : YouTubeBaseActivity() {
 
     }
 
-
+    private fun showMessage(text: String){
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+    }
 }
 
 
