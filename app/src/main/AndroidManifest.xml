@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
     <application
         android:allowBackup="true"
@@ -14,10 +15,12 @@
         android:roundIcon="@drawable/ic_icono"
         android:supportsRtl="true"
         android:theme="@style/Theme.DS3Companion">
+        <activity android:name=".ExtraInfoActivity"></activity>
         <activity android:name=".InventoryActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,8 +35,7 @@
         <activity
             android:name=".YoutubeActivity"
             android:label="@string/api_buttonGuides"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

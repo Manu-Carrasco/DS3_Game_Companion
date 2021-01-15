@@ -5,22 +5,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondos1"
     tools:context=".YoutubeActivity">
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtube_fragment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/character_marginTiny">
 
-<!--    <fragment-->
-<!--        android:id="@+id/youtube_fragment"-->
-<!--        android:name="com.google.android.youtube.player.YouTubePlayerFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+        <Button
+            android:id="@+id/dateButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/bosses_textSize"
+            android:text="Recent Videos"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+
+        <Button
+            android:id="@+id/viewsButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="@dimen/bosses_textSize"
+            android:text="Most Viewed"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+
+        <Button
+            android:id="@+id/relevantButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="@dimen/bosses_textSize"
+            android:text="Relevant Videos"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewVideos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:paddingBottom="@dimen/bosses_paddingHorizontal"/>
 
 </LinearLayout>

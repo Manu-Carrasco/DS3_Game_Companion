@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExtraInfoActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/fondos1">
+
+    <TextView
+        android:id="@+id/textTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/name_boss1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/accountsMarginY"
+        android:textStyle="bold|italic"
+        tools:ignore="SpUsage" />
+    <Button
+        android:id="@+id/bossVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/character_marginLarge"
+        android:backgroundTint="@color/tabs"
+        android:textStyle="bold"
+        android:text="@string/boss_videoGuide"/>
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_boss1"
+        android:layout_margin="@dimen/character_marginTiny"
+        android:textColor="@color/white"
+        android:textSize="@dimen/character_marginTiny"
+        tools:ignore="SpUsage" />
+
+
+</LinearLayout>

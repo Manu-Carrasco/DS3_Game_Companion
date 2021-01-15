@@ -73,6 +73,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss1Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,6 +139,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss2Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -189,6 +205,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss3Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -247,6 +271,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss4Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

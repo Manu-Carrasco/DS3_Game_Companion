@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:padding="@dimen/character_paddingHorizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/videoThumb"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:src="@drawable/bosses1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/character_paddingHorizontal"
+        android:layout_gravity="left">
+
+        <TextView
+            android:id="@+id/videoTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="VIDEO TITTLE"/>
+
+        <TextView
+            android:id="@+id/videoChannel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Video Channel"/>
+
+        <TextView
+            android:id="@+id/videoTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:text="Video Time"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

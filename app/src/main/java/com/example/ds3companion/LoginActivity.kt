@@ -95,33 +95,9 @@ class LoginActivity : AppCompatActivity() {
             signIn()
         }
         forgotButton.setOnClickListener{
-//            val builder = AlertDialog.Builder(this)
-//            builder.setTitle(getString(R.string.button_forgotPassword))
-//            val view = layoutInflater.inflate(R.layout.dialog_forgot_password,null)
-//            val username = view.findViewById<EditText>(R.id.et_username)
-//            builder.setView(view)
-//            builder.setPositiveButton("Reset", DialogInterface.OnClickListener{ _, _ ->
-//                forgotPassword(username)
-//            })
-//            builder.setNegativeButton("close", DialogInterface.OnClickListener{ _, _ -> })
-//            builder.show()
+
         }
     }
-
-//    private fun forgotPassword(username: EditText){
-//        if(username.text.toString().isEmpty()) {
-//            return
-//        }
-//        if (!Patterns.EMAIL_ADDRESS.matcher(username.text.toString()).matches()) {
-//            return
-//        }
-//        auth.sendPasswordResetEmail(username.text.toString())
-//                .addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        showMessage("Message Send")
-//                    }
-//                }
-//    }
 
     private fun findOnlineAccount(username: String, password: String){
         firestore
