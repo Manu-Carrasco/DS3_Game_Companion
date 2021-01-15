@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondos1"
+    tools:context=".YoutubeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/character_marginTiny">
+
+        <Button
+            android:id="@+id/dateButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/bosses_textSize"
+            android:text="Recent Videos"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+
+        <Button
+            android:id="@+id/viewsButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="@dimen/bosses_textSize"
+            android:text="Most Viewed"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+
+        <Button
+            android:id="@+id/relevantButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="@dimen/bosses_textSize"
+            android:text="Relevant Videos"
+            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewVideos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:paddingBottom="@dimen/bosses_paddingHorizontal"/>
+
+</LinearLayout>

@@ -1,20 +1,23 @@
 package com.example.ds3companion
 
-import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ds3companion.fragment.AccountsFragment
 import com.example.ds3companion.fragment.BossesFragment
 import com.example.ds3companion.fragment.ChatFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayServicesAvailable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -52,4 +55,28 @@ class MainActivity : AppCompatActivity() {
 
         MobileAds.initialize(this)
     }
+
+
+    override fun onBackPressed() {
+        getResultsFromApi()
+        val builder = AlertDialog.Builder(this)
+        if(isTaskRoot){
+            builder.setMessage("Do you want to exit App")
+            builder.setPositiveButton("YES") { _, _ ->
+                this.finish()
+            }
+            builder.setNegativeButton("NO") { dialog, _ ->
+                dialog.cancel()
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
+        } else{
+            super.onBackPressed()
+        }
+    }
+
+    private fun getResultsFromApi() {
+
+    }
+
 }

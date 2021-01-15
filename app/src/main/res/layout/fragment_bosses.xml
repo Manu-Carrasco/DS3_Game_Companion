@@ -10,6 +10,17 @@
         android:layout_height="wrap_content"
         android:gravity="center">
 
+        <Button
+            android:id="@+id/buttonGuides"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/accountsMarginY"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:drawableRight="@drawable/ic_youtube"
+            android:text="@string/api_buttonGuides"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +73,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss1Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,6 +139,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss2Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -178,6 +205,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss3Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -236,6 +271,14 @@
                     android:src="@drawable/ic_tablaefectos" />
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/boss4Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
+            android:backgroundTint="@color/tabs"
+            android:textStyle="bold"
+            android:text="@string/boss_moreData"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -244,4 +287,5 @@
         <!--    -->
 
     </LinearLayout>
+
 </ScrollView>

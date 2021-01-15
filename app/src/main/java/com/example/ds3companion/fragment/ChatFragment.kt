@@ -84,50 +84,6 @@ class ChatFragment: Fragment(){
 
     }
 
-//    private fun sendMessage(message: String){
-//        Firebase.auth.currentUser?.uid?.let { userId: String ->
-//
-//
-//            firestore
-//                    .collection(COLLECTION_CHAT)
-//                    .document(userId)
-//                    .get()
-//                    .addOnCompleteListener{
-//                        if(it.isSuccessful){
-//                            it.result?.toObject(User::class.java)?.let{user: User ->
-//                                val chat = Chat(
-//                                        userId = Firebase.auth.currentUser?.uid,
-//                                        message = message,
-//                                        sentAt = Date().time,
-//                                        isSent = false,
-//                                        imageUrl = null,
-//                                        username = user.username,
-//                                        avatarUrl = null
-//                                )
-//                                firestore
-//                                        .collection(COLLECTION_CHAT)
-//                                        .add(chat)
-//                                        .addOnCompleteListener{
-//                                            if(it.isSuccessful){
-//                                                Log.i(MyTag,getString(R.string.message_messageSend))
-//                                                getChats()
-//                                            }
-//                                            else{
-//                                                Log.i(MyTag,getString(R.string.error_messageLost))
-//                                            }
-//                                        }
-//                            } ?: run {
-//
-//                            }
-//                        } else {
-//
-//                        }
-//                    }
-//        } ?: run {
-//
-//        }
-//    }
-
     private fun getChats(){
         swipeRefreshLayout.isRefreshing = true
         firestore

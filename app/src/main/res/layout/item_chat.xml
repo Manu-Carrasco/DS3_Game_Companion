@@ -29,4 +29,5 @@
             android:layout_height="wrap_content"
             tools:text="12:34:10, 1/12/20"/>
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
