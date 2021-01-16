@@ -3,12 +3,18 @@ package com.example.ds3companion
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Message
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ds3companion.adapter.ErrorAdapter
 import com.example.ds3companion.adapter.VideosAdapter
+import com.example.ds3companion.model.ErrorFound
+import com.example.ds3companion.model.Id
+import com.example.ds3companion.model.Items
 import com.example.ds3companion.model.YoutubeInfo
 import com.google.android.gms.common.GooglePlayServicesUtil.getErrorDialog
 import com.google.android.youtube.player.*
@@ -85,8 +91,15 @@ class YoutubeActivity : YouTubeBaseActivity() {
     private fun getYoutubeInfo(jsonInfo: String){
         val gson = GsonBuilder().create()
         val youtubeInfo = gson.fromJson(jsonInfo, YoutubeInfo::class.java)
-        runOnUiThread{
-            recyclerViewVideos.adapter = VideosAdapter(youtubeInfo, getString(R.string.api_key), this@YoutubeActivity)
+        if (youtubeInfo.items.count() == 0) {
+            val errorInfo = gson.fromJson(jsonInfo, ErrorFound::class.java)
+            runOnUiThread{
+                recyclerViewVideos.adapter = ErrorAdapter(errorInfo)
+            }
+        } else {
+            runOnUiThread{
+                recyclerViewVideos.adapter = VideosAdapter(youtubeInfo, getString(R.string.api_key), this@YoutubeActivity)
+            }
         }
     }
 
