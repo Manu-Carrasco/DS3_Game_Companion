@@ -78,7 +78,7 @@ dependencies {
     // Lifecycle Scope
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 
-
-
+    // Get GPS Location
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
 
 }

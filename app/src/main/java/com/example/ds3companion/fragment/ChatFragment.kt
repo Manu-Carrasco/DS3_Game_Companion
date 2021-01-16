@@ -1,5 +1,7 @@
 package com.example.ds3companion.fragment
 
+import android.content.Context.LOCATION_SERVICE
+import android.location.LocationManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +24,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import io.grpc.Context
 import java.util.*
 
 class ChatFragment: Fragment(){
@@ -37,6 +41,10 @@ class ChatFragment: Fragment(){
     private lateinit var firestore: FirebaseFirestore
 
     private lateinit var chatAdapter: ChatAdapter
+
+    lateinit var  locationManager: LocationManager
+    private var hasGPS = false
+    private var hasNetwork = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_chat, container,false)

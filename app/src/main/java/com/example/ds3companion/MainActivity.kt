@@ -1,10 +1,13 @@
 package com.example.ds3companion
 
 import android.app.AlertDialog
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.example.ds3companion.fragment.AccountsFragment
 import com.example.ds3companion.fragment.BossesFragment
 import com.example.ds3companion.fragment.ChatFragment
@@ -12,9 +15,14 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayServicesAvailable
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -52,13 +60,17 @@ class MainActivity : AppCompatActivity() {
         val adView = findViewById<AdView>(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
-
         MobileAds.initialize(this)
+
+        initGPSValues()
+        getUserLocation()
     }
 
+    private fun initGPSValues(){
+        fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(this)
+    }
 
     override fun onBackPressed() {
-        getResultsFromApi()
         val builder = AlertDialog.Builder(this)
         if(isTaskRoot){
             builder.setMessage("Do you want to exit App")
@@ -75,8 +87,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getResultsFromApi() {
-
+    private fun getUserLocation() {
+        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+            return
+        } else {
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener {
+                println(it.latitude.toString())
+                println(it.longitude.toString())
+            }
+        }
     }
 
 }
