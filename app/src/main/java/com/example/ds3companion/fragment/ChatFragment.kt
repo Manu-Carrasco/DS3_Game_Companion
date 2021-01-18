@@ -61,7 +61,6 @@ class ChatFragment: Fragment(){
 
         getChats()
         initListeners()
-
     }
 
     private fun initViews(view: View) {

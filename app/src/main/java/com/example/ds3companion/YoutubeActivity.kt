@@ -1,13 +1,17 @@
 package com.example.ds3companion
 
 import android.app.Activity
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
+import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ds3companion.adapter.ErrorAdapter
@@ -22,6 +26,7 @@ import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_youtube.*
 import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 import okhttp3.*
 import ru.gildor.coroutines.okhttp.await
 import java.io.IOException
@@ -31,6 +36,8 @@ import kotlin.coroutines.coroutineContext
 
 class YoutubeActivity : YouTubeBaseActivity() {
 
+
+    private lateinit var lifecycleOwner: LifecycleOwner
 
     private var dateJson: String? = null
     private var viewJson: String? = null
@@ -106,7 +113,7 @@ class YoutubeActivity : YouTubeBaseActivity() {
     private fun getDateGson(){
         val client = OkHttpClient()
         try {
-            GlobalScope.launch {
+            this.lifecycleOwner.lifecycleScope.launch {
                 withContext(Dispatchers.IO){
                     val dateRequest = Request.Builder().url(dateURL).build()
                     client.newCall(dateRequest).enqueue(object: Callback {
