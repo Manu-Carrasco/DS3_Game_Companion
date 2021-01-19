@@ -31,7 +31,6 @@ class ChatAdapter(private val user: String): RecyclerView.Adapter<ChatAdapter.Me
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = messages[position]
 
-            holder.itemView.findViewById<ConstraintLayout>(R.id.myMessageLayout).visibility = View.VISIBLE
             holder.itemView.findViewById<TextView>(R.id.UsernameTextView).text = message.username
             holder.itemView.findViewById<TextView>(R.id.myMessageTextView).text = message.message
 
