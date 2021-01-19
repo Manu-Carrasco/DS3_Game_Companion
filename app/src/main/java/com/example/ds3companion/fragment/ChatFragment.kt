@@ -4,6 +4,7 @@ import android.content.Context.LOCATION_SERVICE
 import android.location.LocationManager
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +21,10 @@ import com.example.ds3companion.R
 import com.example.ds3companion.adapter.ChatAdapter
 import com.example.ds3companion.model.Chat
 import com.example.ds3companion.model.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import io.grpc.Context
@@ -29,18 +32,14 @@ import java.util.*
 
 class ChatFragment: Fragment(){
 
-    private val MyTag = "Chat"
-
     private lateinit var tabsSound: MediaPlayer
 
-    private lateinit var recyclerView: RecyclerView
     private lateinit var messageEditText: EditText
     private lateinit var sendButton: Button
-    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private  lateinit var auth: FirebaseAuth
 
-    private lateinit var firestore: FirebaseFirestore
+    private  var db = Firebase.firestore
 
-    private lateinit var chatAdapter: ChatAdapter
 
     lateinit var  locationManager: LocationManager
     private var hasGPS = false
@@ -52,59 +51,55 @@ class ChatFragment: Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        firestore =  Firebase.firestore
         initViews(view)
-        initRecyclerView()
 
+        auth = Firebase.auth
         tabsSound = MediaPlayer.create(context, R.raw.accepteffect)
         tabsSound?.start()
 
-        getChats()
         initListeners()
     }
 
     private fun initViews(view: View) {
-        recyclerView = view.findViewById(R.id.recyclerView)
-        messageEditText = view.findViewById(R.id.messageEditText)
-        sendButton = view.findViewById(R.id.sendButton)
-        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+        view.findViewById<RecyclerView>(R.id.messagesRecylerView).layoutManager = LinearLayoutManager(requireContext())
+        view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter = ChatAdapter(user = "user")
+
+        messageEditText = view.findViewById(R.id.messageTextField)
+        sendButton = view.findViewById(R.id.sendMessageButton)
+        //swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+    db.collection("chat").orderBy("time", Query.Direction.ASCENDING).get().addOnSuccessListener { messages ->
+            val listMessages = messages.toObjects(Chat::class.java)
+            (view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter as ChatAdapter).setData(listMessages)
+        }
+
+        db.collection("chat").orderBy("time", Query.Direction.ASCENDING).addSnapshotListener { messages, error ->
+            if(error == null){
+                messages?.let{
+                    val listMessages = it.toObjects(Chat::class.java)
+                    (view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter as ChatAdapter).setData(listMessages)
+                }
+            }
+        }
     }
 
-    private fun initRecyclerView(){
-        val layoutManager = LinearLayoutManager(activity)
-        recyclerView.layoutManager = layoutManager
-
-        chatAdapter = ChatAdapter(chatList = listOf())
-        recyclerView.adapter = chatAdapter
-    }
 
     private fun initListeners(){
         sendButton.setOnClickListener{
-            val message = messageEditText.text.toString()
-            if(message.isBlank()) return@setOnClickListener
-//            sendMessage(message)
-        }
-
-        swipeRefreshLayout.setOnRefreshListener {
-            getChats()
+                sendMessage()
         }
 
     }
+    private fun sendMessage(){
+        var user = "user"
+        if(auth.currentUser != null) user = auth.currentUser!!.displayName.toString()
+        val message = Chat(
+                message = messageEditText.text.toString(),
+                username =  auth.currentUser?.uid.toString()
 
-    private fun getChats(){
-        swipeRefreshLayout.isRefreshing = true
-        firestore
-                .collection(COLLECTION_CHAT)
-                .get()
-                .addOnCompleteListener{
-                    if (it.isSuccessful){
-                        val chats: List<Chat> = it.result?.documents?.mapNotNull { it.toObject(Chat::class.java) }.orEmpty()
-                        chatAdapter.chatList = chats
-                        chatAdapter.notifyDataSetChanged()
-                    } else{
+        //Buscar en firebase users/UID/username
+        )
+        messageEditText.text.clear()
 
-                    }
-                    swipeRefreshLayout.isRefreshing = false
-                }
+        db.collection("chat").document().set(message)
     }
 }
