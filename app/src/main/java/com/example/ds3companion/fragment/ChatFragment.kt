@@ -39,6 +39,7 @@ class ChatFragment: Fragment(){
     private  lateinit var auth: FirebaseAuth
 
     private  var db = Firebase.firestore
+    private var name = "User"
 
 
     lateinit var  locationManager: LocationManager
@@ -54,6 +55,9 @@ class ChatFragment: Fragment(){
         initViews(view)
 
         auth = Firebase.auth
+        db.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { user ->
+            name = user.getString("username").toString()
+        }
         tabsSound = MediaPlayer.create(context, R.raw.accepteffect)
         tabsSound?.start()
 
@@ -90,11 +94,9 @@ class ChatFragment: Fragment(){
 
     }
     private fun sendMessage(){
-        var user = "user"
-        if(auth.currentUser != null) user = auth.currentUser!!.displayName.toString()
         val message = Chat(
                 message = messageEditText.text.toString(),
-                username =  auth.currentUser?.uid.toString()
+                username =  name
 
         //Buscar en firebase users/UID/username
         )
