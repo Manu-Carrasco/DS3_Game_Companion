@@ -27,6 +27,7 @@
     <dimen name="character_marginYSlot3">200dp</dimen>
     <dimen name="character_marginYSlot4">270dp</dimen>
     <dimen name="character_marginYSlot5">300dp</dimen>
+    <dimen name="locationIcon">20dp</dimen>
 
     <dimen name="messageHeight">72dp</dimen>
 

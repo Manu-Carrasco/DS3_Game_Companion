@@ -89,5 +89,6 @@
                               Si se teletransporta a un punto lejano, al aparecer hace un ataque descendente con la espada, con mucho alcance en línea recta.</string>
     <string name="info_boss4">La mejor manera de acabar con él es acosarlo con ataques físicos. Es vulnerable a todos los tipos de daño físico, además de al veneno. Esto significa que una espada a una mano envenenada es absolutamente letal frente a él.
                               Cuando le golpeas lo suficiente se teletransporta para dejar de recibir daño. Gira la cámara hasta ver su luz y corre a por él, antes de darle tiempo a usar magia.</string>
+    <string name="chat_nullLocation">" "</string>
 
 </resources>

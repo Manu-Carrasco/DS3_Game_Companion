@@ -16,7 +16,9 @@
         android:roundIcon="@drawable/ic_icono"
         android:supportsRtl="true"
         android:theme="@style/Theme.DS3Companion">
-        <activity android:name=".ExtraInfoActivity"></activity>
+        <activity android:name=".Activity_map"></activity>
+        <activity android:name=".activity_map" />
+        <activity android:name=".ExtraInfoActivity" />
         <activity android:name=".InventoryActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -36,11 +38,15 @@
         <activity
             android:name=".YoutubeActivity"
             android:label="@string/api_buttonGuides"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBrq9T8zNPKvwrMqvVDcvAL92h0Ps2f13k"/>
+
     </application>
 
 </manifest>

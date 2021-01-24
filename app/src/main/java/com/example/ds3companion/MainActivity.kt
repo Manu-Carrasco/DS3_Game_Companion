@@ -2,10 +2,8 @@ package com.example.ds3companion
 
 import android.app.AlertDialog
 import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.ds3companion.fragment.AccountsFragment
@@ -14,15 +12,16 @@ import com.example.ds3companion.fragment.ChatFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayServicesAvailable
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.jar.Manifest
+import com.google.type.LatLng
+
+lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    var locationGPS: String = " ";
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.chat2 -> {
                     val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainer, ChatFragment()
+                    transaction.replace(R.id.fragmentContainer, ChatFragment(this, locationGPS)
                     )
                     transaction.commit()
                 }
@@ -61,7 +60,6 @@ class MainActivity : AppCompatActivity() {
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
         MobileAds.initialize(this)
-
         initGPSValues()
         getUserLocation()
     }
@@ -93,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             return
         } else {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
+                locationGPS = it.latitude.toString() + ", " + it.longitude.toString();
                 println(it.latitude.toString())
                 println(it.longitude.toString())
             }

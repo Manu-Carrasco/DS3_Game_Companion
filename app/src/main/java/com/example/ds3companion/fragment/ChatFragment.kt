@@ -1,36 +1,27 @@
 package com.example.ds3companion.fragment
 
-import android.content.Context.LOCATION_SERVICE
 import android.location.LocationManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Message
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.ds3companion.Constants.COLLECTION_CHAT
+import com.example.ds3companion.MainActivity
 import com.example.ds3companion.R
 import com.example.ds3companion.adapter.ChatAdapter
 import com.example.ds3companion.model.Chat
-import com.example.ds3companion.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import io.grpc.Context
-import java.util.*
 
-class ChatFragment: Fragment(){
+class ChatFragment(mainActivity: MainActivity, locationPermission: String) : Fragment(){
 
     private lateinit var tabsSound: MediaPlayer
 
@@ -41,10 +32,11 @@ class ChatFragment: Fragment(){
     private  var db = Firebase.firestore
     private var name = "User"
 
-
+    private val mainReference = mainActivity
     lateinit var  locationManager: LocationManager
     private var hasGPS = false
     private var hasNetwork = false
+    private val gpsLocation = locationPermission
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_chat, container,false)
@@ -61,15 +53,16 @@ class ChatFragment: Fragment(){
         tabsSound = MediaPlayer.create(context, R.raw.accepteffect)
         tabsSound?.start()
 
-        initListeners()
+        initListeners(view)
     }
 
     private fun initViews(view: View) {
         view.findViewById<RecyclerView>(R.id.messagesRecylerView).layoutManager = LinearLayoutManager(requireContext())
-        view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter = ChatAdapter(user = "user")
+        view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter = ChatAdapter(user = "user", gpsLocation, mainReference)
 
         messageEditText = view.findViewById(R.id.messageTextField)
         sendButton = view.findViewById(R.id.sendMessageButton)
+
         //swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
     db.collection("chat").orderBy("time", Query.Direction.ASCENDING).get().addOnSuccessListener { messages ->
             val listMessages = messages.toObjects(Chat::class.java)
@@ -87,21 +80,20 @@ class ChatFragment: Fragment(){
     }
 
 
-    private fun initListeners(){
+    private fun initListeners(view: View){
         sendButton.setOnClickListener{
-                sendMessage()
+                sendMessage(view)
         }
 
     }
-    private fun sendMessage(){
+    private fun sendMessage(view: View){
         val message = Chat(
                 message = messageEditText.text.toString(),
-                username =  name
-
-        //Buscar en firebase users/UID/username
+                username =  name,
+                location = gpsLocation
+                //Buscar en firebase users/UID/username
         )
         messageEditText.text.clear()
-
         db.collection("chat").document().set(message)
     }
 }

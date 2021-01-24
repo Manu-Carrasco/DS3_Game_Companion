@@ -45,6 +45,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -80,5 +81,8 @@ dependencies {
 
     // Get GPS Location
     implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    // Google Maps SDK
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
 }
