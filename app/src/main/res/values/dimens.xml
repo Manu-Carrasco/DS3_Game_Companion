@@ -31,6 +31,12 @@
 
     <dimen name="messageHeight">72dp</dimen>
 
+    <dimen name="chat_size1">1dp</dimen>
+    <dimen name="chat_size2">2dp</dimen>
+    <dimen name="chat_size3">8dp</dimen>
+    <dimen name="chat_size4">16dp</dimen>
+    <dimen name="chat_defaultPhoto1">56dp</dimen>
+
     <dimen name="lineX">337dp</dimen>
     <dimen name="lineY">45dp</dimen>
     <dimen name="borderX">400dp</dimen>

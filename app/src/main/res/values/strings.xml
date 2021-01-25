@@ -21,10 +21,19 @@
     <string name="message_userCreated">User created</string>
     <string name="message_userLogged">User logged</string>
     <string name="message_messageSend">Success uploading message</string>
+    <string name="message_noLocation">User location not public</string>
+    <string name="message_exitApp">Do you want to exit App?</string>
+    <string name="message_exitYES">YES</string>
+    <string name="message_exitNO">NO</string>
+    <string name="message_gpsDelimeter">, </string>
+    <string name="message_comGoogle">com.google</string>
+    <string name="message_noAccounts">There are no Google accounts registrated in your device</string>
+    <string name="message_TextView">TextView</string>
 
     <string name="hint_enter_email">Enter your email here</string>
     <string name="hint_enter_password">Enter your password here</string>
     <string name="hint_enter_username">Enter your username here</string>
+    <string name="hint_enter_message">Escribe Mensaje</string>
 
     <string name="error_email_invalid">Email is not Valid</string>
     <string name="error_password_invalid">Password must be at least %d characters long and contain at least a number among them</string>
@@ -33,6 +42,7 @@
     <string name="error_logging">Error logging in, try again</string>
     <string name="error_messageLost">Error uploading message</string>
     <string name="error_signUp">Error signing up, try again.</string>
+    <string name="error_youtubeConnect">Failed to connect to server, try later</string>
 
     <string name="event_registerClick">registerButtonClick</string>
     <string name="event_loginClick">loginButtonClick</string>
@@ -41,7 +51,13 @@
     <string name="event_infoBosses">infoBosses</string>
 
     <string name="api_key">AIzaSyBrq9T8zNPKvwrMqvVDcvAL92h0Ps2f13k</string>
-    <string name="api_buttonGuides">See Videos</string>
+    <string name="api_buttonGuides">Ver Videos</string>
+    <string name="api_buttonRecientes">RECIENTES</string>
+    <string name="api_buttonTopVisitas">MAS VISTOS</string>
+    <string name="api_buttonRelevantes">RELEVANTES</string>
+    <string name="api_videoInfo1">VIDEO TITTLE: </string>
+    <string name="api_videoInfo2">Video Channel: </string>
+    <string name="api_videoInfo3">Video Time: </string>
 
     <string name="sharedPreferences_name">test</string>
     <string name="sharedPreferences_string1">firstkey</string>
@@ -69,6 +85,13 @@
     <string name="class_weapon2">weapon2</string>
     <string name="class_uid">uid</string>
     <string name="class_userdata">UserData</string>
+
+    <string name="extra_videoNum">videoNum</string>
+    <string name="extra_locationX">locationX</string>
+    <string name="extra_locationY">locationY</string>
+    <string name="extra_info">info</string>
+    <string name="extra_userLocation">User Location</string>
+
 
     <string name="open_dots">:</string>
     <string name="name_boss1">Sabio de Cristal</string>

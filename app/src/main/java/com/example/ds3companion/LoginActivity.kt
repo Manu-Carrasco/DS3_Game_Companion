@@ -41,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var googleButton: Button
     private lateinit var loginButton: Button
-    private lateinit var forgotButton: Button
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var progressBar: ProgressBar
@@ -66,7 +65,6 @@ class LoginActivity : AppCompatActivity() {
     private fun initViews() {
         loginButton = findViewById<Button>(R.id.loginButton)
         googleButton = findViewById<Button>(R.id.loginGoogleButton)
-        forgotButton = findViewById<Button>(R.id.forgotPasswordButton)
         usernameEditText = findViewById<EditText>(R.id.usernameEditText)
         passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         progressBar = findViewById(R.id.progressBar)
@@ -75,7 +73,6 @@ class LoginActivity : AppCompatActivity() {
     private fun initListeners() {
         val registerButton: Button = loginButton
         val googleButton: Button = googleButton
-        val forgotButton: Button = forgotButton
         registerButton.setOnClickListener{
 
             val username = usernameEditText.text.toString()
@@ -93,9 +90,6 @@ class LoginActivity : AppCompatActivity() {
         }
         googleButton.setOnClickListener{
             signIn()
-        }
-        forgotButton.setOnClickListener{
-
         }
     }
 

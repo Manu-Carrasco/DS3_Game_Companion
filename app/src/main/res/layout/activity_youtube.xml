@@ -21,7 +21,8 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textSize="@dimen/bosses_textSize"
-            android:text="Recent Videos"
+            android:text="@string/api_buttonRecientes"
+            android:backgroundTint="@color/tabs"
             android:textStyle="bold"
             android:layout_marginHorizontal="@dimen/bosses_textSize"/>
 
@@ -30,9 +31,10 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/tabs"
             android:textStyle="bold"
             android:textSize="@dimen/bosses_textSize"
-            android:text="Most Viewed"
+            android:text="@string/api_buttonTopVisitas"
             android:layout_marginHorizontal="@dimen/bosses_textSize"/>
 
         <Button
@@ -41,8 +43,9 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textStyle="bold"
+            android:backgroundTint="@color/tabs"
             android:textSize="@dimen/bosses_textSize"
-            android:text="Relevant Videos"
+            android:text="@string/api_buttonRelevantes"
             android:layout_marginHorizontal="@dimen/bosses_textSize"/>
     </LinearLayout>
 

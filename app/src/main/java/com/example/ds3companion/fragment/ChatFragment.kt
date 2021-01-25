@@ -11,6 +11,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ds3companion.Constants
 import com.example.ds3companion.MainActivity
 import com.example.ds3companion.R
 import com.example.ds3companion.adapter.ChatAdapter
@@ -47,8 +48,8 @@ class ChatFragment(mainActivity: MainActivity, locationPermission: String) : Fra
         initViews(view)
 
         auth = Firebase.auth
-        db.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { user ->
-            name = user.getString("username").toString()
+        db.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { user ->
+            name = user.getString(Constants.FIELD_USERNAME).toString()
         }
         tabsSound = MediaPlayer.create(context, R.raw.accepteffect)
         tabsSound?.start()
@@ -58,18 +59,18 @@ class ChatFragment(mainActivity: MainActivity, locationPermission: String) : Fra
 
     private fun initViews(view: View) {
         view.findViewById<RecyclerView>(R.id.messagesRecylerView).layoutManager = LinearLayoutManager(requireContext())
-        view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter = ChatAdapter(user = "user", gpsLocation, mainReference)
+        view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter = ChatAdapter(user = Constants.FIELD_USER, gpsLocation, mainReference)
 
         messageEditText = view.findViewById(R.id.messageTextField)
         sendButton = view.findViewById(R.id.sendMessageButton)
 
         //swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
-    db.collection("chat").orderBy("time", Query.Direction.ASCENDING).get().addOnSuccessListener { messages ->
+    db.collection(Constants.COLLECTION_CHAT).orderBy(Constants.FIELD_TIME, Query.Direction.ASCENDING).get().addOnSuccessListener { messages ->
             val listMessages = messages.toObjects(Chat::class.java)
             (view.findViewById<RecyclerView>(R.id.messagesRecylerView).adapter as ChatAdapter).setData(listMessages)
         }
 
-        db.collection("chat").orderBy("time", Query.Direction.ASCENDING).addSnapshotListener { messages, error ->
+        db.collection(Constants.COLLECTION_CHAT).orderBy(Constants.FIELD_TIME, Query.Direction.ASCENDING).addSnapshotListener { messages, error ->
             if(error == null){
                 messages?.let{
                     val listMessages = it.toObjects(Chat::class.java)
@@ -94,6 +95,6 @@ class ChatFragment(mainActivity: MainActivity, locationPermission: String) : Fra
                 //Buscar en firebase users/UID/username
         )
         messageEditText.text.clear()
-        db.collection("chat").document().set(message)
+        db.collection(Constants.COLLECTION_CHAT).document().set(message)
     }
 }

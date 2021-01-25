@@ -9,16 +9,16 @@
 
 
     <ImageView
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/chat_size3"
         android:id="@+id/characterImage"
-        android:layout_width="56dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="5dp"
+        android:layout_width="@dimen/chat_defaultPhoto1"
+        android:layout_height="@dimen/chat_defaultPhoto1"
+        android:layout_marginStart="@dimen/bosses_paddingVertical"
         android:text="@string/button_login"
         app:srcCompat="@drawable/ic_personaje1" />
 
     <LinearLayout
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/chat_size3"
         android:id="@+id/UsernameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,16 +30,16 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:gravity="start"
-            android:paddingLeft="8dp"
-            android:text="TextView"
+            android:paddingLeft="@dimen/chat_size3"
+            android:text="@string/message_TextView"
             android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/myMessageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="TextView"
+            android:padding="@dimen/chat_size3"
+            android:text="@string/message_TextView"
             android:textColor="@android:color/white" />
     </LinearLayout>
 

@@ -81,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
         }
         googleButton.setOnClickListener{
             val am: AccountManager = AccountManager.get(this) // "this" references the current Context
-            val possibleEmails: Array<out Account> = am.getAccountsByType("com.google")
+            val possibleEmails: Array<out Account> = am.getAccountsByType(getString(R.string.message_comGoogle))
             if(possibleEmails.isNotEmpty()){
                 val email: String = possibleEmails[0].name.toString()
                 emailEditText.setText(email)
@@ -91,7 +91,7 @@ class RegisterActivity : AppCompatActivity() {
                 usernameEditText.setText(user)
 
             } else {
-                showMessage("There are no Google accounts registrated in your device")
+                showMessage(getString(R.string.message_noAccounts))
             }
         }
     }

@@ -55,20 +55,9 @@
             android:layout_height="match_parent"
             android:backgroundTint="@color/tabs"
             android:drawableRight="@drawable/ic_round_login"
+            android:layout_marginHorizontal="@dimen/accountsMarginX"
             android:text="@string/button_login"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
-
-        <Button
-            android:id="@+id/forgotPasswordButton"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:backgroundTint="@color/tabs"
-            android:textSize="@dimen/bosses_textSize"
-            android:text="@string/button_forgotPassword"
-            android:layout_marginHorizontal="@dimen/bosses_textSize"/>
+            android:textStyle="bold"/>
     </LinearLayout>
     <Button
         android:id="@+id/loginGoogleButton"

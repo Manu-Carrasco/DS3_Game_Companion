@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/videoThumb"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="@dimen/bossImageY"
         android:src="@drawable/bosses1" />
 
     <LinearLayout
@@ -26,14 +26,14 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:text="VIDEO TITTLE"/>
+            android:text="VIDEO TITTLE: "/>
 
         <TextView
             android:id="@+id/videoChannel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Video Channel"/>
+            android:text="Video Channel: "/>
 
         <TextView
             android:id="@+id/videoTime"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="italic"
-            android:text="Video Time"/>
+            android:text="Video Time: "/>
 
 
     </LinearLayout>

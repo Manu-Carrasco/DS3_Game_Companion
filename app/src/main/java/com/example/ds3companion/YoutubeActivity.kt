@@ -118,7 +118,7 @@ class YoutubeActivity : YouTubeBaseActivity() {
                     val dateRequest = Request.Builder().url(dateURL).build()
                     client.newCall(dateRequest).enqueue(object: Callback {
                         override fun onFailure(call: Call, e: IOException) {
-                            showMessage("Failed to connect to server, try later")
+                            showMessage(getString(R.string.error_youtubeConnect))
                             println(e)
                         }
                         override fun onResponse(call: Call, response: Response) {
@@ -129,7 +129,7 @@ class YoutubeActivity : YouTubeBaseActivity() {
                 }
             }
         } catch (e: IOException) {
-            showMessage("Failed to connect to server, try later")
+            showMessage(getString(R.string.error_youtubeConnect))
             println(e)
             throw IOException("Some additional debug info: ${e.message}", e)
         }
@@ -141,7 +141,7 @@ class YoutubeActivity : YouTubeBaseActivity() {
         val dateRequest = Request.Builder().url(viewsURL).build()
         client.newCall(dateRequest).enqueue(object: Callback {
             override fun onFailure(call: Call, e: IOException) {
-                println("Algo ha ido mal al intentar sacar la info de youtube")
+                //println("Algo ha ido mal al intentar sacar la info de youtube")
             }
             override fun onResponse(call: Call, response: Response) {
                 viewJson = response.body?.string().toString()
@@ -157,7 +157,7 @@ class YoutubeActivity : YouTubeBaseActivity() {
         val dateRequest = Request.Builder().url(relevanceURL).build()
         client.newCall(dateRequest).enqueue(object: Callback {
             override fun onFailure(call: Call, e: IOException) {
-                println("Algo ha ido mal al intentar sacar la info de youtube")
+                //println("Algo ha ido mal al intentar sacar la info de youtube")
             }
             override fun onResponse(call: Call, response: Response) {
                 relevanceJson = response.body?.string().toString()

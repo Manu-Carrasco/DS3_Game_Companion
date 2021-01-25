@@ -71,11 +71,11 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
         if(isTaskRoot){
-            builder.setMessage("Do you want to exit App")
-            builder.setPositiveButton("YES") { _, _ ->
+            builder.setMessage(getString(R.string.message_exitApp))
+            builder.setPositiveButton(getString(R.string.message_exitYES)) { _, _ ->
                 this.finish()
             }
-            builder.setNegativeButton("NO") { dialog, _ ->
+            builder.setNegativeButton(getString(R.string.message_exitNO)) { dialog, _ ->
                 dialog.cancel()
             }
             val alertDialog = builder.create()
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             return
         } else {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
-                locationGPS = it.latitude.toString() + ", " + it.longitude.toString();
+                locationGPS = it.latitude.toString() + getString(R.string.message_gpsDelimeter) + it.longitude.toString();
                 println(it.latitude.toString())
                 println(it.longitude.toString())
             }

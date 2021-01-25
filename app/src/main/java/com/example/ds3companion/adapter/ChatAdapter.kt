@@ -58,8 +58,8 @@ class ChatAdapter(private val user: String, private val myLocation: String, priv
                     val distance = calculateDistance(ownLocation, textLocation)
                     val ping = calculatePing(distance)
                     val info = "Distance: $distance km | Minimal Ping: $ping ms"
-                    val locationX = textLocation.split(", ")[0].toDouble()
-                    val locationY = textLocation.split(", ")[1].toDouble()
+                    val locationX = textLocation.split(",")[0].toDouble()
+                    val locationY = textLocation.split(",")[1].toDouble()
 
                     // This way a new Activity can be created from the Adapter,
                     // it needs the Bundle in order to get the info from the intent
@@ -77,7 +77,7 @@ class ChatAdapter(private val user: String, private val myLocation: String, priv
         private fun calculateDistance(ownLocation: String, textLocation: String): Float {
             // This is a formula based on different sources from internet
             val earthRadiusKm = 6371;
-            val delimiter = ", "
+            val delimiter = ","
             val ownLatitude = ownLocation.split(delimiter)[0].toFloat()
             val ownLongitute = ownLocation.split(delimiter)[1].toFloat()
             //val userLatitude = textLocation.split(delimeter)[0].toFloat()     // User Message Clicked Coordinates

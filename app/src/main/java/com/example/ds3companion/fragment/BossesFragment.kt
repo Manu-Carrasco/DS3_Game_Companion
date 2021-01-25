@@ -42,19 +42,19 @@ class BossesFragment: Fragment (){
         }
 
         buttonBoss1.setOnClickListener{
-            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra("videoNum", 1)
+            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra(getString(R.string.extra_videoNum), 1)
             startActivity(intent)
         }
         buttonBoss2.setOnClickListener{
-            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra("videoNum", 2)
+            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra(getString(R.string.extra_videoNum), 2)
             startActivity(intent)
         }
         buttonBoss3.setOnClickListener{
-            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra("videoNum", 3)
+            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra(getString(R.string.extra_videoNum), 3)
             startActivity(intent)
         }
         buttonBoss4.setOnClickListener{
-            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra("videoNum", 4)
+            val intent = Intent(view.context, ExtraInfoActivity::class.java).putExtra(getString(R.string.extra_videoNum), 4)
             startActivity(intent)
         }
 
