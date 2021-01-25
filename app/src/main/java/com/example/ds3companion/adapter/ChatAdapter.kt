@@ -65,8 +65,10 @@ class ChatAdapter(private val user: String, private val myLocation: String, priv
                     // it needs the Bundle in order to get the info from the intent
                     val intent = Intent(activityReference, Activity_map::class.java)
                     val extras = Bundle()
-                    extras.putDouble("locationX", locationX)
-                    extras.putDouble("locationY", locationY)
+                    //extras.putDouble("locationX", locationX)
+                    //extras.putDouble("locationY", locationY)
+                    extras.putDouble("locationX", 35.689487)
+                    extras.putDouble("locationY", 139.691711)
                     extras.putString("info", info)
                     intent.putExtras(extras)
                     startActivity(activityReference, intent, extras)
@@ -80,8 +82,8 @@ class ChatAdapter(private val user: String, private val myLocation: String, priv
             val delimiter = ","
             val ownLatitude = ownLocation.split(delimiter)[0].toFloat()
             val ownLongitute = ownLocation.split(delimiter)[1].toFloat()
-            //val userLatitude = textLocation.split(delimeter)[0].toFloat()     // User Message Clicked Coordinates
-            //val userLongitute = textLocation.split(delimeter)[1].toFloat()    // User Message Clicked Coordinates
+            //val userLatitude = textLocation.split(delimiter)[0].toFloat()     // User Message Clicked Coordinates
+            //val userLongitute = textLocation.split(delimiter)[1].toFloat()    // User Message Clicked Coordinates
             val userLatitude = 35.689487    // Tokyo Coordinates
             val userLongitute = 139.691711  // Tokyo Coordinates
             val alpha1 = ownLatitude * Math.PI/180

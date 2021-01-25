@@ -25,7 +25,7 @@
     <string name="message_exitApp">Do you want to exit App?</string>
     <string name="message_exitYES">YES</string>
     <string name="message_exitNO">NO</string>
-    <string name="message_gpsDelimeter">, </string>
+    <string name="message_gpsDelimeter">,</string>
     <string name="message_comGoogle">com.google</string>
     <string name="message_noAccounts">There are no Google accounts registrated in your device</string>
     <string name="message_TextView">TextView</string>

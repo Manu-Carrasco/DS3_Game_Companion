@@ -48,7 +48,7 @@ class YoutubeActivity : YouTubeBaseActivity() {
     private lateinit var relevantButton: Button
 
     private val dateURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&order=date&publishedAfter=2020-01-01T00%3A00%3A00Z&q=dark%20souls%203&relevanceLanguage=en&type=video&key=AIzaSyBrq9T8zNPKvwrMqvVDcvAL92h0Ps2f13k"
-    private val viewsURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&order=viewCount&q=dark%20souls%203&relevanceLanguage=en&type=video&key=AIzaSyBrq9T8zNPKvwrMqvVDcvAL92h0Ps2f13k"
+    private val viewsURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&order=viewCount&q=dark%20souls%203&relevanceLanguage=en&type=video&key=AIzaSyBrq9T8zNPKvwrMqvVDcvAL92h0Ps2f13k_"
     private val relevanceURL = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&order=relevance&q=dark%20souls%203&relevanceLanguage=en&type=video&key=AIzaSyBrq9T8zNPKvwrMqvVDcvAL92h0Ps2f13k"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,7 +113,7 @@ class YoutubeActivity : YouTubeBaseActivity() {
     private fun getDateGson(){
         val client = OkHttpClient()
         try {
-            this.lifecycleOwner.lifecycleScope.launch {
+            GlobalScope.launch {
                 withContext(Dispatchers.IO){
                     val dateRequest = Request.Builder().url(dateURL).build()
                     client.newCall(dateRequest).enqueue(object: Callback {
