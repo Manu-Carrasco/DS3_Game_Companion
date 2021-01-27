@@ -9,11 +9,10 @@
 
 
     <ImageView
-        android:layout_marginTop="@dimen/chat_size3"
-        android:id="@+id/characterImage"
-        android:layout_width="@dimen/chat_defaultPhoto1"
-        android:layout_height="@dimen/chat_defaultPhoto1"
-        android:layout_marginStart="@dimen/bosses_paddingVertical"
+        android:id="@+id/userImage"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
+        android:layout_marginLeft="5dp"
         android:text="@string/button_login"
         app:srcCompat="@drawable/ic_personaje1" />
 
