@@ -14,12 +14,11 @@
         android:foreground="@drawable/ic_recuadro"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/characterImage"
             android:layout_width="@dimen/borderY"
             android:layout_height="@dimen/borderY"
             android:layout_margin="@dimen/character_marginTiny"
-            android:text="@string/button_login"
             app:srcCompat="@drawable/ic_personaje1" />
 
         <LinearLayout
@@ -188,16 +187,16 @@
             android:text="@string/button_login"
             app:srcCompat="@drawable/ic_silueta" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/headImage"
             android:layout_width="@dimen/slotSize"
             android:layout_height="@dimen/slotSize"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="@dimen/character_marginXCentralSlots"
             android:layout_marginTop="@dimen/character_paddingHorizontal"
-            app:srcCompat="@drawable/ic_slotvacio" />
+            android:src="@drawable/ic_slotvacio" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/chestImage"
             android:layout_width="@dimen/slotSize"
             android:layout_height="@dimen/slotSize"
@@ -206,7 +205,7 @@
             android:layout_marginTop="@dimen/character_marginYSlot1"
             app:srcCompat="@drawable/ic_slotvacio" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/handsImage"
             android:layout_width="@dimen/slotSize"
             android:layout_height="@dimen/slotSize"
@@ -215,7 +214,7 @@
             android:layout_marginTop="@dimen/character_marginYSlot3"
             app:srcCompat="@drawable/ic_slotvacio" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/weapon1Image"
             android:layout_width="@dimen/slotSize"
             android:layout_height="@dimen/slotSize"
@@ -223,7 +222,7 @@
             android:layout_marginTop="@dimen/character_marginYSlot4"
             app:srcCompat="@drawable/ic_slotvacio" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/weapon2Image"
             android:layout_width="@dimen/slotSize"
             android:layout_height="@dimen/slotSize"
@@ -232,7 +231,7 @@
             android:layout_marginRight="@dimen/character_marginXSideSlots"
             app:srcCompat="@drawable/ic_slotvacio" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/legsImage"
             android:layout_width="@dimen/slotSize"
             android:layout_height="@dimen/slotSize"
@@ -240,6 +239,33 @@
             android:layout_marginLeft="@dimen/character_marginXCentralSlots"
             android:layout_marginTop="@dimen/character_marginYSlot5"
             app:srcCompat="@drawable/ic_slotvacio" />
+        <ImageButton
+            android:id="@+id/Option1Image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="150dp"
+            android:layout_marginTop="380dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_slotvacio" />
+        <ImageButton
+            android:id="@+id/Option2Image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="380dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_slotvacio" />
+        <ImageButton
+            android:id="@+id/Option3Image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="380dp"
+            android:layout_marginLeft="150dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_slotvacio" />
+
     </FrameLayout>
 
     <Button
@@ -249,6 +275,7 @@
         android:layout_centerInParent="true"
         android:backgroundTint="@color/tabs"
         android:layout_margin="@dimen/character_paddingHorizontal"
+
         android:text="@string/button_logout" />
 
 </LinearLayout>
