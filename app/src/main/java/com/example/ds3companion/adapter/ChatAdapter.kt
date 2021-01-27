@@ -58,10 +58,12 @@ class ChatAdapter(private val user: String, private val myLocation: String, priv
                     ActivityCompat.requestPermissions(activityReference, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
                     Toast.makeText(itemView.context, "We need your location to calculate distances", Toast.LENGTH_LONG).show()
                 } else {
-                    if(ownLocation.isEmpty()) {
+                    if(ownLocation.length <= 3) {
                         fusedLocationProviderClient.lastLocation.addOnSuccessListener {
                             ownLocation = it.latitude.toString() + "," + it.longitude.toString();
+                            val i = 0
                         }
+                        val i = 0
                     }
                     if(itemView.findViewById<TextView>(R.id.myLocationText).text == " ") {
                         Toast.makeText(itemView.context, "User's location not public", Toast.LENGTH_LONG).show()

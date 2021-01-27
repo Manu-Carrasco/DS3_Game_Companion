@@ -88,6 +88,11 @@ class MainActivity : AppCompatActivity() {
     private fun getUserLocation() {
         if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+            fusedLocationProviderClient.lastLocation.addOnSuccessListener {
+                locationGPS = it.latitude.toString() + getString(R.string.message_gpsDelimeter) + it.longitude.toString();
+                println(it.latitude.toString())
+                println(it.longitude.toString())
+            }
             return
         } else {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
