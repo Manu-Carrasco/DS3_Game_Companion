@@ -1,6 +1,7 @@
 package com.example.ds3companion.adapter
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.Settings.System.putString
 import android.view.LayoutInflater
@@ -8,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ds3companion.Activity_map
 import com.example.ds3companion.MainActivity
 import com.example.ds3companion.R
+import com.example.ds3companion.fusedLocationProviderClient
 import com.example.ds3companion.model.Chat
 import java.lang.reflect.Array.getDouble
 import java.lang.reflect.Array.getFloat
@@ -48,30 +51,40 @@ class ChatAdapter(private val user: String, private val myLocation: String, priv
         return messages.size
     }
 
-    class MessageViewHolder(itemView: View, ownLocation: String, activityReference: MainActivity): RecyclerView.ViewHolder(itemView){
+    class MessageViewHolder(itemView: View, var ownLocation: String, activityReference: MainActivity): RecyclerView.ViewHolder(itemView){
         init {
             itemView.setOnClickListener{
-                if(itemView.findViewById<TextView>(R.id.myLocationText).text == " ") {
-                    Toast.makeText(itemView.context, "User's location not public", Toast.LENGTH_LONG).show()
+                if(ActivityCompat.checkSelfPermission(activityReference, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(activityReference, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+                    Toast.makeText(itemView.context, "We need your location to calculate distances", Toast.LENGTH_LONG).show()
                 } else {
-                    val textLocation = itemView.findViewById<TextView>(R.id.myLocationText).text.toString()
-                    val distance = calculateDistance(ownLocation, textLocation)
-                    val ping = calculatePing(distance)
-                    val info = "Distance: $distance km | Minimal Ping: $ping ms"
-                    val locationX = textLocation.split(",")[0].toDouble()
-                    val locationY = textLocation.split(",")[1].toDouble()
+                    if(ownLocation.isEmpty()) {
+                        fusedLocationProviderClient.lastLocation.addOnSuccessListener {
+                            ownLocation = it.latitude.toString() + "," + it.longitude.toString();
+                        }
+                    }
+                    if(itemView.findViewById<TextView>(R.id.myLocationText).text == " ") {
+                        Toast.makeText(itemView.context, "User's location not public", Toast.LENGTH_LONG).show()
+                    } else {
+                        val textLocation = itemView.findViewById<TextView>(R.id.myLocationText).text.toString()
+                        val distance = calculateDistance(ownLocation, textLocation)
+                        val ping = calculatePing(distance)
+                        val info = "Distance: $distance km | Minimal Ping: $ping ms"
+                        val locationX = textLocation.split(",")[0].toDouble()
+                        val locationY = textLocation.split(",")[1].toDouble()
 
-                    // This way a new Activity can be created from the Adapter,
-                    // it needs the Bundle in order to get the info from the intent
-                    val intent = Intent(activityReference, Activity_map::class.java)
-                    val extras = Bundle()
-                    //extras.putDouble("locationX", locationX)
-                    //extras.putDouble("locationY", locationY)
-                    extras.putDouble("locationX", 35.689487)
-                    extras.putDouble("locationY", 139.691711)
-                    extras.putString("info", info)
-                    intent.putExtras(extras)
-                    startActivity(activityReference, intent, extras)
+                        // This way a new Activity can be created from the Adapter,
+                        // it needs the Bundle in order to get the info from the intent
+                        val intent = Intent(activityReference, Activity_map::class.java)
+                        val extras = Bundle()
+                        //extras.putDouble("locationX", locationX)
+                        //extras.putDouble("locationY", locationY)
+                        extras.putDouble("locationX", 35.689487)
+                        extras.putDouble("locationY", 139.691711)
+                        extras.putString("info", info)
+                        intent.putExtras(extras)
+                        startActivity(activityReference, intent, extras)
+                    }
                 }
             }
         }
