@@ -61,6 +61,7 @@ class InventoryActivity : AppCompatActivity() {
         super.onResume()
         tabsSound = MediaPlayer.create(this, R.raw.openingeffect)
         tabsSound?.start()
+        //getCharacterData()
     }
     private fun initViews() {
         headButton = findViewById<ImageButton>(R.id.headImage)
@@ -75,6 +76,7 @@ class InventoryActivity : AppCompatActivity() {
         option3Button = findViewById<ImageButton>(R.id.Option3Image)
 
         profileButton = findViewById<ImageButton>(R.id.characterImage)
+
     }
 
     private fun initListeners(){
@@ -85,7 +87,7 @@ class InventoryActivity : AppCompatActivity() {
             ViewOptions("chest")
         }
         handsButton.setOnClickListener {
-            ViewOptions("hands")
+            ViewOptions("arms")
         }
         weapon1Button.setOnClickListener {
             ViewOptions("weapon1")
@@ -101,13 +103,13 @@ class InventoryActivity : AppCompatActivity() {
 
 
         option1Button.setOnClickListener {
-            ChangePart(1)
+            ChangePart("1")
         }
         option2Button.setOnClickListener {
-            ChangePart(2)
+            ChangePart("2")
         }
         option3Button.setOnClickListener {
-            ChangePart(3)
+            ChangePart("3")
         }
 
         profileButton.setOnClickListener {
@@ -115,9 +117,6 @@ class InventoryActivity : AppCompatActivity() {
         }
     }
     fun getCharacterData(){
-        findViewById<TextView>(R.id.nameText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.sharedPreferences_username), null)
-        findViewById<TextView>(R.id.levelText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_level), null)
-        findViewById<TextView>(R.id.locationText).text = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_location), null)
         var seconds : Double? = getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).getString(getString(R.string.class_playtime), null)?.toDouble()
         var minutes : Double? = seconds?.div(60)
         var hours : Double? = minutes?.div(60)
@@ -126,6 +125,29 @@ class InventoryActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.secondsText).text = "${seconds?.roundToInt()}"
         findViewById<TextView>(R.id.minutesText).text = "${minutes?.roundToInt()}"
         findViewById<TextView>(R.id.hoursText).text = "${hours?.roundToInt()}"
+
+        firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
+            if(snapshot.exists()){
+                findViewById<TextView>(R.id.nameText).text = snapshot.getString(getString(R.string.sharedPreferences_username))
+                findViewById<TextView>(R.id.levelText).text = snapshot.getString(getString(R.string.class_level))
+                findViewById<TextView>(R.id.locationText).text = snapshot.getString(getString(R.string.class_location))
+
+                ViewOptions(getString(R.string.class_head))
+                snapshot.getString(getString(R.string.class_head))?.let { ChangePart(it) }
+                ViewOptions(getString(R.string.class_arms))
+                snapshot.getString(getString(R.string.class_arms))?.let { ChangePart(it) }
+                ViewOptions(getString(R.string.class_chest))
+                snapshot.getString(getString(R.string.class_chest))?.let { ChangePart(it) }
+                ViewOptions(getString(R.string.class_weapon1))
+                snapshot.getString(getString(R.string.class_weapon1))?.let { ChangePart(it) }
+                ViewOptions(getString(R.string.class_weapon2))
+                snapshot.getString(getString(R.string.class_weapon2))?.let { ChangePart(it) }
+                ViewOptions(getString(R.string.class_legs))
+                snapshot.getString(getString(R.string.class_legs))?.let { ChangePart(it) }
+
+            }
+        }
+
     }
     private fun ViewOptions(part: String){
         chosenPart = part
@@ -166,7 +188,7 @@ class InventoryActivity : AppCompatActivity() {
                 option3Button.visibility = View.VISIBLE
                 option3Button.setImageResource(R.drawable.ic_personaje3)
             }
-            "hands" -> { option1Button.visibility = View.VISIBLE
+            "arms" -> { option1Button.visibility = View.VISIBLE
                 option1Button.setImageResource(R.drawable.ic_personaje1)
                 option2Button.visibility = View.VISIBLE
                 option2Button.setImageResource(R.drawable.ic_personaje1)
@@ -175,51 +197,58 @@ class InventoryActivity : AppCompatActivity() {
             }
         }
     }
-    private  fun ChangePart(option: Int){
+    private  fun ChangePart(option: String){
         when(chosenPart){
             "head" -> {
                 when(option){
-                    1 -> headButton.setImageDrawable(option1Button.drawable)
-                    2 -> headButton.setImageDrawable(option2Button.drawable)
-                    3 -> headButton.setImageDrawable(option3Button.drawable)
+                    "1" -> headButton.setImageDrawable(option1Button.drawable)
+                    "2" -> headButton.setImageDrawable(option2Button.drawable)
+                    "3" -> headButton.setImageDrawable(option3Button.drawable)
                 }
+                firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).update(getString(R.string.class_head), option)
             }
             "chest" -> {
                 when(option){
-                    1 -> chestButton.setImageDrawable(option1Button.drawable)
-                    2 -> chestButton.setImageDrawable(option2Button.drawable)
-                    3 -> chestButton.setImageDrawable(option3Button.drawable)
+                    "1" -> chestButton.setImageDrawable(option1Button.drawable)
+                    "2" -> chestButton.setImageDrawable(option2Button.drawable)
+                    "3" -> chestButton.setImageDrawable(option3Button.drawable)
                 }
+                firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).update(getString(R.string.class_chest), option)
             }
             "legs" -> {
                 when(option){
-                    1 -> legsButton.setImageDrawable(option1Button.drawable)
-                    2 -> legsButton.setImageDrawable(option2Button.drawable)
-                    3 -> legsButton.setImageDrawable(option3Button.drawable)
+                    "1" -> legsButton.setImageDrawable(option1Button.drawable)
+                    "2" -> legsButton.setImageDrawable(option2Button.drawable)
+                    "3" -> legsButton.setImageDrawable(option3Button.drawable)
                 }
+                firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).update(getString(R.string.class_legs), option)
             }
             "weapon1" -> {
                 when(option){
-                    1 -> weapon1Button.setImageDrawable(option1Button.drawable)
-                    2 -> weapon1Button.setImageDrawable(option2Button.drawable)
-                    3 -> weapon1Button.setImageDrawable(option3Button.drawable)
+                    "1" -> weapon1Button.setImageDrawable(option1Button.drawable)
+                    "2" -> weapon1Button.setImageDrawable(option2Button.drawable)
+                    "3" -> weapon1Button.setImageDrawable(option3Button.drawable)
                 }
+                firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).update(getString(R.string.class_weapon1), option)
             }
             "weapon2" -> {
                 when(option){
-                    1 -> weapon2Button.setImageDrawable(option1Button.drawable)
-                    2 -> weapon2Button.setImageDrawable(option2Button.drawable)
-                    3 -> weapon2Button.setImageDrawable(option3Button.drawable)
+                    "1" -> weapon2Button.setImageDrawable(option1Button.drawable)
+                    "2" -> weapon2Button.setImageDrawable(option2Button.drawable)
+                    "3" -> weapon2Button.setImageDrawable(option3Button.drawable)
                 }
+                firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).update(getString(R.string.class_weapon2), option)
             }
-            "hands" -> {
+            "arms" -> {
                 when(option){
-                    1 -> handsButton.setImageDrawable(option1Button.drawable)
-                    2 -> handsButton.setImageDrawable(option2Button.drawable)
-                    3 -> handsButton.setImageDrawable(option3Button.drawable)
+                    "1" -> handsButton.setImageDrawable(option1Button.drawable)
+                    "2" -> handsButton.setImageDrawable(option2Button.drawable)
+                    "3" -> handsButton.setImageDrawable(option3Button.drawable)
                 }
+                firestore.collection(Constants.COLLECTION_USERS).document(auth.currentUser?.uid.toString()).update(getString(R.string.class_arms), option)
             }
         }
+        chosenPart = ""
         CloseOptions()
     }
     private fun CloseOptions(){

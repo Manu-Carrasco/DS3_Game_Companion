@@ -71,7 +71,7 @@
     <string name="userclass_class2">mage</string>
     <string name="userclass_class3">archer</string>
     <string name="class_startlocation">Dungeon</string>
-    <string name="class_legs">Legs</string>
+    <string name="class_legs">legs</string>
     <string name="class_arms">arms</string>
     <string name="class_chest">chest</string>
     <string name="class_head">head</string>

@@ -140,6 +140,16 @@ class LoginActivity : AppCompatActivity() {
                 getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_level), snapshot.getString(getString(R.string.class_level))).apply()
                 getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_location), snapshot.getString(getString(R.string.class_location))).apply()
                 getSharedPreferences(getString(R.string.class_userdata), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_playtime), snapshot.getString(getString(R.string.class_playtime))).apply()
+
+
+                if(snapshot.contains(getString(R.string.class_head))){
+                    getSharedPreferences(getString(R.string.class_arms), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_arms), snapshot.getString(getString(R.string.class_arms))).apply()
+                    getSharedPreferences(getString(R.string.class_chest), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_chest), snapshot.getString(getString(R.string.class_chest))).apply()
+                    getSharedPreferences(getString(R.string.class_weapon1), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_weapon1), snapshot.getString(getString(R.string.class_weapon1))).apply()
+                    getSharedPreferences(getString(R.string.class_weapon2), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_weapon2), snapshot.getString(getString(R.string.class_weapon2))).apply()
+                    getSharedPreferences(getString(R.string.class_head), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_head), snapshot.getString(getString(R.string.class_head))).apply()
+                    getSharedPreferences(getString(R.string.class_legs), Context.MODE_PRIVATE).edit().putString(getString(R.string.class_legs), snapshot.getString(getString(R.string.class_legs))).apply()
+                }
             } else {
                 showMessage(getString(R.string.error_serverDown))
             }
