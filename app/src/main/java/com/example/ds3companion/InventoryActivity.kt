@@ -154,46 +154,46 @@ class InventoryActivity : AppCompatActivity() {
         when(part){
             "head" -> {
                     option1Button.visibility = View.VISIBLE
-                    option1Button.setImageResource(R.drawable.ic_personaje1)
+                    option1Button.setImageResource(R.drawable.head1)
                     option2Button.visibility = View.VISIBLE
-                    option2Button.setImageResource(R.drawable.ic_personaje2)
+                    option2Button.setImageResource(R.drawable.head2)
                     option3Button.visibility = View.VISIBLE
-                    option3Button.setImageResource(R.drawable.ic_personaje3)
+                    option3Button.setImageResource(R.drawable.head3)
                     }
             "chest" -> { option1Button.visibility = View.VISIBLE
-                option1Button.setImageResource(R.drawable.ic_personaje2)
+                option1Button.setImageResource(R.drawable.chest1)
                 option2Button.visibility = View.VISIBLE
-                option2Button.setImageResource(R.drawable.ic_personaje2)
+                option2Button.setImageResource(R.drawable.chest2)
                 option3Button.visibility = View.VISIBLE
-                option3Button.setImageResource(R.drawable.ic_personaje3)
+                option3Button.setImageResource(R.drawable.chest3)
             }
             "legs" -> { option1Button.visibility = View.VISIBLE
-                option1Button.setImageResource(R.drawable.ic_personaje1)
+                option1Button.setImageResource(R.drawable.boots1)
                 option2Button.visibility = View.VISIBLE
-                option2Button.setImageResource(R.drawable.ic_personaje2)
+                option2Button.setImageResource(R.drawable.boots2)
                 option3Button.visibility = View.VISIBLE
-                option3Button.setImageResource(R.drawable.ic_personaje2)
+                option3Button.setImageResource(R.drawable.boots3)
             }
             "weapon1" -> { option1Button.visibility = View.VISIBLE
-                option1Button.setImageResource(R.drawable.ic_personaje3)
+                option1Button.setImageResource(R.drawable.weapon11)
                 option2Button.visibility = View.VISIBLE
-                option2Button.setImageResource(R.drawable.ic_personaje2)
+                option2Button.setImageResource(R.drawable.weapon12)
                 option3Button.visibility = View.VISIBLE
-                option3Button.setImageResource(R.drawable.ic_personaje3)
+                option3Button.setImageResource(R.drawable.weapon13)
             }
             "weapon2" -> { option1Button.visibility = View.VISIBLE
-                option1Button.setImageResource(R.drawable.ic_personaje1)
+                option1Button.setImageResource(R.drawable.weapon21)
                 option2Button.visibility = View.VISIBLE
-                option2Button.setImageResource(R.drawable.ic_personaje1)
+                option2Button.setImageResource(R.drawable.weapon22)
                 option3Button.visibility = View.VISIBLE
-                option3Button.setImageResource(R.drawable.ic_personaje3)
+                option3Button.setImageResource(R.drawable.weapon23)
             }
             "arms" -> { option1Button.visibility = View.VISIBLE
-                option1Button.setImageResource(R.drawable.ic_personaje1)
+                option1Button.setImageResource(R.drawable.hands1)
                 option2Button.visibility = View.VISIBLE
-                option2Button.setImageResource(R.drawable.ic_personaje1)
+                option2Button.setImageResource(R.drawable.hands2)
                 option3Button.visibility = View.VISIBLE
-                option3Button.setImageResource(R.drawable.ic_personaje1)
+                option3Button.setImageResource(R.drawable.hands3)
             }
         }
     }
