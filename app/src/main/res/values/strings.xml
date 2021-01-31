@@ -106,12 +106,24 @@
     <string name="boss_video4">UEjjWenxaSg</string>
     <string name="info_boss1">La mejor manera de acabar con él es acosarlo con ataques físicos. Es vulnerable a todos los tipos de daño físico, además de al veneno. Esto significa que una espada a una mano envenenada es absolutamente letal frente a él.
                               Cuando le golpeas lo suficiente se teletransporta para dejar de recibir daño. Gira la cámara hasta ver su luz y corre a por él, antes de darle tiempo a usar magia.</string>
+    <string name="info_boss1Extra">La mejor manera de acabar con él es acosarlo con ataques físicos. Es vulnerable a todos los tipos de daño físico, además de al veneno. Esto significa que una espada a una mano envenenada es absolutamente letal frente a él.
+                              Cuando le golpeas lo suficiente se teletransporta para dejar de recibir daño. Gira la cámara hasta ver su luz y corre a por él, antes de darle tiempo a usar magia.
+        Alternativamente, puedes intentar predecir a dónde se teletransportará el Sabio (generalmente al extremo opuesto de la arena) y apresurarlo durante la pelea, ignorando la convocatoria. La convocatoria se teletransporta junto con el Sabio, por lo que es preferible una gran cantidad de daño para causar teletransportes muy rápidos, lo que le da tiempo para curarse y prepararse para encontrar al Sabio en la reaparición.</string>
     <string name="info_boss2">El enemigo es humanoide, lo que implica que puedes bloquear, desviar y contraatacar, así como apuñalar por la espalda. Dado que usan una gran espada como arma, suelen quedar desprotegidos tras sus ataques.
                               La pelea se divide en dos fases, y durante la primera aparecerán uno más de ellos cada 20 segundos.</string>
+    <string name="info_boss2Extra">El enemigo es humanoide, lo que implica que puedes bloquear, desviar y contraatacar, así como apuñalar por la espalda. Dado que usan una gran espada como arma, suelen quedar desprotegidos tras sus ataques.
+                              La pelea se divide en dos fases, y durante la primera aparecerán uno más de ellos cada 20 segundos.
+    En la primera fase puedes hacer kite the boss hasta que aparezcan los agregados. Una vez que aparece el primer agregado, el que no tiene los ojos rojos, sigue corriendo y solo lanza cuando hay oportunidades perfectas, esas aparecen de vez en cuando ya que el jefe principal comenzará a estar más a la defensiva después de que aparezca el primer agregado.</string>
     <string name="info_boss3">Debes tener en cuenta que se teletransporta y que, si está en medio de un combo, al reaparecer lo terminara, pero puedes bloquear todos sus ataques.
                               Si se teletransporta a un punto lejano, al aparecer hace un ataque descendente con la espada, con mucho alcance en línea recta.</string>
+    <string name="info_boss3Extra">Debes tener en cuenta que se teletransporta y que, si está en medio de un combo, al reaparecer lo terminara, pero puedes bloquear todos sus ataques.
+                              Si se teletransporta a un punto lejano, al aparecer hace un ataque descendente con la espada, con mucho alcance en línea recta.
+    Tenga cuidado porque algunos de sus combos, como la doble barra horizontal, a veces irán seguidos de una barra vertical y parece que no hay forma de saber qué combo será aparte de esperar y observar.</string>
     <string name="info_boss4">La mejor manera de acabar con él es acosarlo con ataques físicos. Es vulnerable a todos los tipos de daño físico, además de al veneno. Esto significa que una espada a una mano envenenada es absolutamente letal frente a él.
                               Cuando le golpeas lo suficiente se teletransporta para dejar de recibir daño. Gira la cámara hasta ver su luz y corre a por él, antes de darle tiempo a usar magia.</string>
+    <string name="info_boss4Extra">La mejor manera de acabar con él es acosarlo con ataques físicos. Es vulnerable a todos los tipos de daño físico, además de al veneno. Esto significa que una espada a una mano envenenada es absolutamente letal frente a él.
+                              Cuando le golpeas lo suficiente se teletransporta para dejar de recibir daño. Gira la cámara hasta ver su luz y corre a por él, antes de darle tiempo a usar magia.
+    Alternativamente, puedes intentar predecir a dónde se teletransportará el Sabio (generalmente al extremo opuesto de la arena) y apresurarlo durante la pelea, ignorando la convocatoria. La convocatoria se teletransporta junto con el Sabio, por lo que es preferible una gran cantidad de daño para causar teletransportes muy rápidos, lo que le da tiempo para curarse y prepararse para encontrar al Sabio en la reaparición.</string>
     <string name="chat_nullLocation">" "</string>
 
 </resources>

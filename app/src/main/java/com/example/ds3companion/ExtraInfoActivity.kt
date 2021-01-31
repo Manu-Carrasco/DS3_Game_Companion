@@ -31,19 +31,19 @@ class ExtraInfoActivity : AppCompatActivity() {
         when(bossNum){
             1 -> {
                 tittleText.text = getString(R.string.name_boss1)
-                infoText.text = getString(R.string.info_boss1)
+                infoText.text = getString(R.string.info_boss1Extra)
             }
             2 -> {
                 tittleText.text = getString(R.string.name_boss2)
-                infoText.text = getString(R.string.info_boss2)
+                infoText.text = getString(R.string.info_boss2Extra)
             }
             3 -> {
                 tittleText.text = getString(R.string.name_boss3)
-                infoText.text = getString(R.string.info_boss3)
+                infoText.text = getString(R.string.info_boss3Extra)
             }
             4 -> {
                 tittleText.text = getString(R.string.name_boss4)
-                infoText.text = getString(R.string.info_boss4)
+                infoText.text = getString(R.string.info_boss4Extra)
             }
         }
 
